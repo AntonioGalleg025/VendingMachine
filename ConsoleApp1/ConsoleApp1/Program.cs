@@ -32,7 +32,7 @@ namespace ConsoleApp1
                 switch(Opcion)
                 {
                     case 1:
-
+                        maquina.ComprarProducto();
                         break;
 
                     case 2:
@@ -65,6 +65,7 @@ namespace ConsoleApp1
                         if(CodigoSecreto == "0000")
                         {
                             Console.WriteLine("Contraseña correcta!");
+                            //Implementar el metodo correspondiente
                         }
                         else
                         {

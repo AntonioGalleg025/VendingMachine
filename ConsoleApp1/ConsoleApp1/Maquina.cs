@@ -12,15 +12,13 @@ namespace ConsoleApp1
 
         public Maquina() { }
 
-        public void Comprar() 
+        public void ComprarProducto()
         {
-          
             Console.WriteLine("Escribe el ID del producto:");
             int Id = int.Parse(Console.ReadLine());
 
             foreach (Producto c in ListaProductos)
             { 
-
                 if (c.Id == Id)
                 {
                     Console.WriteLine("Cual es el metodo de pago deseado: 1.Efectivo  2.Targeta ");
@@ -29,34 +27,19 @@ namespace ConsoleApp1
                     switch(option) 
                     {
                         case 1:
-                            Console.WriteLine("Introduce el efectivo:");
+                            PagoEfectivo NuevoPagoConEfectivo = new PagoEfectivo();
+                            NuevoPagoConEfectivo.PagarConEfectivo(ListaProductos, c);
                             break;
-                        case 2:
-                            Console.WriteLine("Introduce el numerode tu tarjeta: ");
-                            string num_Targeta = Console.ReadLine();
-                            Console.WriteLine("Introduce tu saldo:");
-                            double saldo = double.Parse(Console.ReadLine());
-                            Console.WriteLine("Introduce la fecha de caducidad (DD/MM/AAAA)");
-                            string fech_Caducidad = Console.ReadLine();
-                            Console.WriteLine("Introduce el codigo de seguridad (****)");
-                            int cod_Seguridad = int.Parse(Console.ReadLine());
 
-                            if (c.Precio <= saldo)
-                            {
-                                saldo = saldo - c.Precio;
-                                Console.WriteLine($"Tu saldo actual es: {saldo}");
-                            
-                            
-                            }
+                        case 2:
+                            PagoTarjeta NuevoPagoConTarjeta = new PagoTarjeta();
+                            NuevoPagoConTarjeta.PagoConTarjeta(ListaProductos, c);
                             break;
                     
                     }
-
-                
+                    break;
                 }
-
             }
-
         }
 
 
