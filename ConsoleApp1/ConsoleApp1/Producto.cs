@@ -28,9 +28,10 @@ namespace ConsoleApp1
             Id = id;
         }
 
-        public virtual void NuevoProducto() {
-
+        public virtual void NuevoProducto(List<Producto> ListaProductos) {
+            
             Console.WriteLine("---------------------Vamos a agregar un producto--------------------");
+            Id = ListaProductos.Count() + 1;
             Console.WriteLine("\nIntroduce el nombre de su producto: ");
             Nombre = Console.ReadLine();
             Console.WriteLine("\nIntroduce el numero de unidades del producto: ");

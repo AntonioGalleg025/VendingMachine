@@ -46,7 +46,7 @@ namespace ConsoleApp1
                         CodigoSecreto = Console.ReadLine();
                         if (CodigoSecreto == "0000")
                         {
-
+                            Console.WriteLine("Contraseña correcta!");
                             maquina.AniadirProducto();
                         }
                         else
@@ -64,7 +64,7 @@ namespace ConsoleApp1
                         CodigoSecreto = Console.ReadLine();
                         if(CodigoSecreto == "0000")
                         {
-
+                            Console.WriteLine("Contraseña correcta!");
                         }
                         else
                         {

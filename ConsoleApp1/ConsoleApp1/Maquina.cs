@@ -23,19 +23,19 @@ namespace ConsoleApp1
             {
                 case 1:
                     ProductoPrecioso productoPrecioso = new ProductoPrecioso();
-                    productoPrecioso.NuevoProducto();
+                    productoPrecioso.NuevoProducto(ListaProductos);
                     ListaProductos.Add(productoPrecioso);
                     break;
 
                 case 2:
                     ProductoAlimenticio productoAlimenticio = new ProductoAlimenticio();
-                    productoAlimenticio.NuevoProducto();
+                    productoAlimenticio.NuevoProducto(ListaProductos);
                     ListaProductos.Add(productoAlimenticio);
                     break;
 
                 case 3:
                     ProductoElectronico productoElectronico = new ProductoElectronico();
-                    productoElectronico.NuevoProducto();
+                    productoElectronico.NuevoProducto(ListaProductos);
                     ListaProductos.Add(productoElectronico);
                     break;
 
