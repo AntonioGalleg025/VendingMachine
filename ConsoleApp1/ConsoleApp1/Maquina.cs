@@ -8,7 +8,7 @@ namespace ConsoleApp1
 {
     internal class Maquina
     {
-
+        public List<Producto> ListaProductos = new List<Producto>();
 
         public Maquina() { }
 
@@ -23,17 +23,20 @@ namespace ConsoleApp1
             {
                 case 1:
                     ProductoPrecioso productoPrecioso = new ProductoPrecioso();
-
+                    productoPrecioso.NuevoProducto();
+                    ListaProductos.Add(productoPrecioso);
                     break;
 
                 case 2:
                     ProductoAlimenticio productoAlimenticio = new ProductoAlimenticio();
-
+                    productoAlimenticio.NuevoProducto();
+                    ListaProductos.Add(productoAlimenticio);
                     break;
 
                 case 3:
                     ProductoElectronico productoElectronico = new ProductoElectronico();
-
+                    productoElectronico.NuevoProducto();
+                    ListaProductos.Add(productoElectronico);
                     break;
 
                 default:

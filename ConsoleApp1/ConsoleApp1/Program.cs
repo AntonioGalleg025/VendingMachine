@@ -12,6 +12,7 @@ namespace ConsoleApp1
         static string CodigoSecreto;
         static void Main(string[] args)
         {
+            Maquina maquina = new Maquina();
             Console.WriteLine("Sea bienvenido a su Maquina de Vending");
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
@@ -27,6 +28,7 @@ namespace ConsoleApp1
                 Console.WriteLine("4-Carga completa de productos");
                 Console.WriteLine("5-Salir del programa");
                 Console.WriteLine("\n\nSeleccione una opcion");
+                Opcion = int.Parse(Console.ReadLine());
                 switch(Opcion)
                 {
                     case 1:
@@ -45,6 +47,7 @@ namespace ConsoleApp1
                         if (CodigoSecreto == "0000")
                         {
 
+                            maquina.AniadirProducto();
                         }
                         else
                         {

@@ -14,7 +14,12 @@ namespace ConsoleApp1
 
         public bool Precargado { get; set; }
 
-
+        public ProductoElectronico(string infoNutricional, int id, string nombre, int unidades, double precio, string descripcion)
+        : base(id, nombre, unidades, precio, descripcion)
+        {
+             
+        }
+        public ProductoElectronico() { }
         public override void NuevoProducto()
         {
             base.NuevoProducto();
