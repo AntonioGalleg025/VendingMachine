@@ -8,5 +8,12 @@ namespace ConsoleApp1
 {
     internal class ProductoAlimenticio: Producto
     {
+
+
+        public override void NuevoProducto()
+        {
+            base.NuevoProducto();
+
+        }
     }
 }

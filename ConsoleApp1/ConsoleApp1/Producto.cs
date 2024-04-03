@@ -10,7 +10,7 @@ namespace ConsoleApp1
     {
 
         public Producto() { }
-
+        public int Id { get; set; }
         public string Nombre { get; set; }
 
         public int Unidades { get; set; }
@@ -19,12 +19,13 @@ namespace ConsoleApp1
 
         public string Descripcion { get; set; }
 
-        public Producto(string nombre, int unidades, double precio, string descripcion)
+        public Producto(int id, string nombre, int unidades, double precio, string descripcion)
         {
             Nombre = nombre;
             Unidades = unidades;
             Precio = precio;
             Descripcion = descripcion;
+            Id = id;
         }
 
         public virtual void NuevoProducto() {
