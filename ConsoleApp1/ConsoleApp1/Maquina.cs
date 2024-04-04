@@ -76,7 +76,43 @@ namespace ConsoleApp1
             }
         }
 
+        public void ListarPreciosos()
+        {
+            Console.WriteLine("---------------------Productos preciosos--------------------");
+            Console.WriteLine();
+            foreach (Producto p in ListaProductos)
+            {
+                if (p is ProductoPrecioso)
+                {
+                    Console.WriteLine(p.MostrarReducido());
+                }
+            }
+        }
 
-        
+        public void ListarElectronicos()
+        {
+            Console.WriteLine("---------------------Productos electrónicos--------------------");
+            Console.WriteLine();
+            foreach (Producto p in ListaProductos)
+            {
+                if (p is ProductoElectronico)
+                {
+                    Console.WriteLine(p.MostrarReducido());
+                }
+            }
+        }
+
+        public void ListarAlimenticios()
+        {
+            Console.WriteLine("---------------------Productos alimenticios--------------------");
+            Console.WriteLine();
+            foreach (Producto p in ListaProductos)
+            {
+                if (p is ProductoAlimenticio)
+                {
+                    Console.WriteLine(p.MostrarReducido());
+                }
+            }
+        }
     }
 }
