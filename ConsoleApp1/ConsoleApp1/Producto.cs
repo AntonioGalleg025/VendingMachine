@@ -10,47 +10,55 @@ namespace ConsoleApp1
     {
 
         public Producto() { }
-        public int Id { get; set; }
-        public string Nombre { get; set; }
 
-        public int Unidades { get; set; }
+        /*tipo_producto: Indica la categoría del producto, con 1 para materiales preciosos, 2 para
+        productos alimenticios y 3 para productos electrónicos. Esta clasificación ayuda a la correcta
+        asignación de productos dentro de la máquina expendedora. */
 
-        public double Precio { get; set; }
+        //donde esta esto ??
 
-        public string Descripcion { get; set; }
+        public int Nombre_producto { get; set; }
+
+        public string Nombre_producto { get; set; }
+
+        public int Unidades_producto { get; set; }
+
+        public double Precio_unidad_producto { get; set; }
+
+        public string descripción_del_producto { get; set; }
 
         public Producto(int id, string nombre, int unidades, double precio, string descripcion)
         {
-            Nombre = nombre;
-            Unidades = unidades;
-            Precio = precio;
-            Descripcion = descripcion;
-            Id = id;
+            Nombre_producto = nombre;
+            Unidades_producto = unidades;
+            Precio_unidad_producto = precio;
+            descripción_del_producto = descripcion;
+            Nombre_producto = id;
         }
 
         public virtual void NuevoProducto(List<Producto> ListaProductos) {
             
             Console.WriteLine("---------------------Vamos a agregar un producto--------------------");
-            Id = ListaProductos.Count() + 1;
+            Nombre_producto = ListaProductos.Count() + 1;
             Console.WriteLine("\nIntroduce el nombre de su producto: ");
             Nombre = Console.ReadLine();
             Console.WriteLine("\nIntroduce el numero de unidades del producto: ");
-            Unidades = int.Parse(Console.ReadLine());
+            Unidades_producto = int.Parse(Console.ReadLine());
             Console.WriteLine("\nCual es el precio por unidad del producto?: ");
-            Precio = double.Parse(Console.ReadLine());
+            Precio_unidad_producto = double.Parse(Console.ReadLine());
             Console.WriteLine("\nIntroduce una breve descripcion del producto: ");
-            Descripcion = Console.ReadLine();
+            descripción_del_producto = Console.ReadLine();
         }
 
         public virtual string MostrarDetalles()
         {
-            return $"({Id}) Nombre: {Nombre}\n\tUNidades disponibles: {Unidades}\n\tPrecio: {Precio} euros" +
-                $"\n\tDescripción: {Descripcion}";
+            return $"({Nombre_producto}) Nombre: {Nombre} \n\tUnidades disponibles: {Unidades_producto} \n\tPrecio: {Precio_unidad_producto} euros " +
+                $"\n\tDescripción: {descripción_del_producto}";
         }
 
         public virtual string MostrarUnElemento()
         {
-            return $"({Id} Nombre: {Nombre})\n\t Unidades disponibles :{Unidades}\n\tPrecio: {Precio} euros";
+            return $"({Id}) Nombre: {Nombre}\n\tUnidades disponibles: {Unidades}\n\tPrecio: {Precio} euros";
         }
     }
 }
