@@ -8,8 +8,9 @@ namespace ConsoleApp1
 {
     abstract class Producto
     {
-
+        // Constructor
         public Producto() { }
+        // Propiedades
         public int Id { get; set; }
         public string TipoProducto { get; set; }
         public string Nombre_producto { get; set; }

@@ -10,7 +10,9 @@ namespace ConsoleApp1
 {
     internal class PagoEfectivo
     {
+        
         public double TotalDinero { get; set; }
+        // Array con las diferentes centimos, monedas y billetes disponibles
         public static double[] Monedas = new double[]
         {
             0.01,
@@ -30,13 +32,15 @@ namespace ConsoleApp1
             500.0
         };
 
-
+        // Método para realizar un pago en efectivo
         public void PagarConEfectivo(double[] Precios)
         {
+            // Sumamos el precio de cada producto al total
             for (int i = 0; i < Precios.Length; i++)
             {
                 TotalDinero += Precios[i];
             }
+            // Bucle para realizar el pago 
             do
             {
                 MostrarTiposDeMonedas();
@@ -65,6 +69,7 @@ namespace ConsoleApp1
             } while (TotalDinero > 0);
         }
 
+        //mostramos el tipo de moneda si es centimo / euros / billetes 
         private void MostrarTiposDeMonedas()
         {
             for (int i = 0; i < Monedas.Length; i++)
