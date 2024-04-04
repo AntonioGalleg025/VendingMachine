@@ -87,6 +87,7 @@ namespace ConsoleApp1
                         }
                         else
                         {
+                            /*cuando haya introducido el código incorrecto*/
                             Console.WriteLine("No ha introducido el codigo correcto");
                             Console.WriteLine("Saliendo al menu principal...");
                             System.Threading.Thread.Sleep(1000);
@@ -94,6 +95,7 @@ namespace ConsoleApp1
                         break;
 
                     default: 
+                        /*Cuando ponga un número del 1 al 5*/
                         Console.WriteLine("Opcion incorrecta"); 
                         break;
                 }
@@ -101,6 +103,7 @@ namespace ConsoleApp1
             } while(Opcion != 5);
             if(Opcion == 5)
             {
+                /*En caso de que ponga el 5*/
                 Console.WriteLine("Gracias por usar la maquina, esperamos verle pronto :)");
             }
         }
