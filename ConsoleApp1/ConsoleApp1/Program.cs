@@ -36,7 +36,7 @@ namespace ConsoleApp1
 
                     case 2:
                         maquina.ListarPreciosos();
-                        maquina.ListarElectronico();
+                        maquina.ListarElectronicos();
                         maquina.ListarAlimenticios();
                         Console.ReadKey();
                         break;
