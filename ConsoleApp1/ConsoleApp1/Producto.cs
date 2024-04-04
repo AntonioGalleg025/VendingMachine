@@ -41,5 +41,16 @@ namespace ConsoleApp1
             Console.WriteLine("\nIntroduce una breve descripcion del producto: ");
             Descripcion = Console.ReadLine();
         }
+
+        public virtual string MostrarDetalles()
+        {
+            return $"({Id}) Nombre: {Nombre}\n\tUNidades disponibles: {Unidades}\n\tPrecio: {Precio} euros" +
+                $"\n\tDescripción: {Descripcion}";
+        }
+
+        public virtual string MostrarUnElemento()
+        {
+            return $"({Id} Nombre: {Nombre})\n\t Unidades disponibles :{Unidades}\n\tPrecio: {Precio} euros";
+        }
     }
 }

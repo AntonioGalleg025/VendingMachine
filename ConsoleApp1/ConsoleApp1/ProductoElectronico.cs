@@ -69,5 +69,28 @@ namespace ConsoleApp1
             Console.WriteLine("-----------Producto ha sido agregado con exito, pulse una tecla para continuar-------------");
             Console.ReadKey();
         }
+
+        public override string MostrarDetalles()
+        {
+            string pilas = null;
+            string precarga = null;
+            if(Pilas == true)
+            {
+                pilas = "Si";
+            }
+            else if(Pilas  == false)
+            {
+                pilas = "No";
+            }
+            else if(Precargado == true)
+            {
+                precarga = "Si";
+            }
+            else if (Precargado == false)
+            {
+                precarga = "No";
+            }
+            return $"{base.MostrarDetalles()}\n\t¿Contiene pilas? {pilas}/{Pilas}\n\t¿Viene precargado? {precarga}/{Precargado}";
+        }
     }
 }

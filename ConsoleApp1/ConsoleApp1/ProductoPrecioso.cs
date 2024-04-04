@@ -30,5 +30,10 @@ namespace ConsoleApp1
             Console.WriteLine("-----------Producto ha sido agregado con exito, pulse una tecla para continuar-------------");
             Console.ReadKey();
         }
+
+        public override string MostrarDetalles()
+        {
+            return $"{base.MostrarDetalles()}\n\tTipo de material: {TipoMaterial}\n\tPeso: {Peso} gramos";
+        }
     }
 }

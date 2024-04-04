@@ -36,7 +36,9 @@ namespace ConsoleApp1
                         break;
 
                     case 2:
-
+                        maquina.ListarPreciosos();
+                        maquina.ListarElectronico();
+                        maquina.ListarPreciosos();
                         break;
 
                     case 3:
