@@ -72,30 +72,12 @@ namespace ConsoleApp1
 
         public override string MostrarDetalles()
         {
-            string pilas = null;
-            string precarga = null;
-            if (Pilas == true)
-            {
-                Console.WriteLine("Si");
-                pilas = Console.ReadLine();
-            }
-            else if (Pilas == false)
-            {
-                Console.WriteLine("No");
-                pilas = Console.ReadLine();
-            }
-            else if (Precargado == true)
-            {
-                Console.WriteLine("Si");
-                precarga = Console.ReadLine();
-            }
-            else if (Precargado == false)
-            {
-                Console.WriteLine("No");
-                precarga = Console.ReadLine();
-            }
+            return $"{base.MostrarDetalles()}\n\t¿Contiene pilas? {Pilas}\n\t¿Viene precargado? {Precargado}";
+        }
 
-            return $"{base.MostrarDetalles()}\n\t¿Contiene pilas? {pilas}\n\t¿Viene precargado? {precarga}";
+        public override string MostrarUnElemento()
+        {
+            return base.MostrarUnElemento();
         }
     }
 }

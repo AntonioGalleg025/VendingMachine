@@ -84,7 +84,7 @@ namespace ConsoleApp1
             {
                 if (p is ProductoPrecioso)
                 {
-                    Console.WriteLine(p.MostrarReducido());
+                    Console.WriteLine(p.MostrarUnElemento());
                 }
             }
         }
@@ -97,7 +97,7 @@ namespace ConsoleApp1
             {
                 if (p is ProductoElectronico)
                 {
-                    Console.WriteLine(p.MostrarReducido());
+                    Console.WriteLine(p.MostrarUnElemento());
                 }
             }
         }
@@ -110,7 +110,7 @@ namespace ConsoleApp1
             {
                 if (p is ProductoAlimenticio)
                 {
-                    Console.WriteLine(p.MostrarReducido());
+                    Console.WriteLine(p.MostrarUnElemento());
                 }
             }
         }

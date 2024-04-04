@@ -56,9 +56,9 @@ namespace ConsoleApp1
                 $"\n\tDescripción: {descripción_del_producto}";
         }
 
-        public virtual string MostrarReducido()
+        public virtual string MostrarUnElemento()
         {
-            return $"({Nombre_producto}) Nombre: {Nombre}\n\tUnidades disponibles: {Unidades_producto}\n\tPrecio: {Precio_unidad_producto} euros";
+            return $"({Id}) Nombre: {Nombre}\n\tUnidades disponibles: {Unidades}\n\tPrecio: {Precio} euros";
         }
     }
 }

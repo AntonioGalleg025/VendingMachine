@@ -35,5 +35,10 @@ namespace ConsoleApp1
         {
             return $"{base.MostrarDetalles()}\n\tTipo de material: {TipoMaterial}\n\tPeso: {Peso} gramos";
         }
+
+        public override string MostrarUnElemento()
+        {
+            return base.MostrarUnElemento();
+        }
     }
 }
