@@ -31,5 +31,10 @@ namespace ConsoleApp1
         {
             return $"{base.MostrarDetalles()}\n\tDescripción nutricional: {InfoNutricional}";
         }
+
+        public override string MostrarUnElemento()
+        {
+            return base.MostrarUnElemento();
+        }
     }
 }

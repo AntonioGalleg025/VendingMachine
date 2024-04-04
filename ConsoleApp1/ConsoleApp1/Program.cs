@@ -18,7 +18,6 @@ namespace ConsoleApp1
             Console.Clear();
             Console.WriteLine("Por favor, pulse una tecla y seleccione una opcion del menu para continuar: ");
             Console.ReadKey();
-            Console.ReadKey();
             do
             {
                 Console.Clear();
@@ -38,7 +37,8 @@ namespace ConsoleApp1
                     case 2:
                         maquina.ListarPreciosos();
                         maquina.ListarElectronico();
-                        maquina.ListarPreciosos();
+                        maquina.ListarAlimenticios();
+                        Console.ReadKey();
                         break;
 
                     case 3:
