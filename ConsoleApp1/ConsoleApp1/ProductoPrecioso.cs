@@ -23,6 +23,7 @@ namespace ConsoleApp1
         public override void NuevoProducto(List<Producto> L)
         {
             base.NuevoProducto(L);
+            TipoProducto = "Producto Precioso";
             Console.WriteLine("\nIntroduce el tipo de material del producto precioso: ");
             TipoMaterial = Console.ReadLine();
             Console.WriteLine("\nIntroduce el Peso (en gramos) de su producto precioso: ");

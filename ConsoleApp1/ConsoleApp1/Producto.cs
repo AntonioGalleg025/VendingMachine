@@ -6,21 +6,13 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class Producto
+    abstract class Producto
     {
 
         public Producto() { }
-
-        /*tipo_producto: Indica la categoría del producto, con 1 para materiales preciosos, 2 para
-        productos alimenticios y 3 para productos electrónicos. Esta clasificación ayuda a la correcta
-        asignación de productos dentro de la máquina expendedora. */
-
-        //donde esta esto ??
-
         public int Id { get; set; }
-
+        public string TipoProducto { get; set; }
         public string Nombre_producto { get; set; }
-
         public int Unidades_producto { get; set; }
 
         public double Precio_unidad_producto { get; set; }

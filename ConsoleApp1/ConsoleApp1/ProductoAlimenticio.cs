@@ -21,6 +21,7 @@ namespace ConsoleApp1
         public override void NuevoProducto(List<Producto> L)
         {
             base.NuevoProducto(L);
+            TipoProducto = "Producto Alimenticio";
             Console.WriteLine("Introduce una descripcion a cerca de la informacion nutricional de su producto");
             InfoNutricional = Console.ReadLine();
             Console.WriteLine("-----------Producto ha sido agregado con exito, pulse una tecla para continuar-------------");

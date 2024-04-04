@@ -6,6 +6,14 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
+    /*Ejercicio Realizado por: Antonio Gallego Ortiz, Carlos Ynclan Nieto, Adrian Zamorano Valero
+     
+     
+     Notas:
+       *Hacer infinita la compra de productos 
+     
+     
+     */
     internal class Program
     {
         static int Opcion;
@@ -34,19 +42,14 @@ namespace ConsoleApp1
                     
                     case 1:
                         /*Llamamos a la función en la clase máquina para comprar producto*/
+                        Console.Clear();
                         maquina.ComprarProducto();
                         break;
 
                     case 2:
                         /*Llamamos a las funciones para hacer las listas reducidas*/
                         Console.Clear();
-                        maquina.ListarPreciosos();
-                        maquina.ListarElectronicos();
-                        maquina.ListarAlimenticios();
-                        /*Pedimos el id del producto que queremos ver detalladamente*/
-                        Console.WriteLine("Introduce el ID del producto que desea ver: ");
-                        int id_producto = int.Parse(Console.ReadLine());
-                        Console.ReadKey();
+                        maquina.BuscarProducto();
                         break;
 
                     case 3:
@@ -95,7 +98,7 @@ namespace ConsoleApp1
                         break;
                 }
 
-            } while (Opcion != 5);
+            } while(Opcion != 5);
             if(Opcion == 5)
             {
                 Console.WriteLine("Gracias por usar la maquina, esperamos verle pronto :)");

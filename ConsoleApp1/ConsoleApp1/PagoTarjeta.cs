@@ -8,9 +8,14 @@ namespace ConsoleApp1
 {
     internal class PagoTarjeta
     {
+        public double TotalDinero { get; set; }
 
-        public void PagoConTarjeta(List<Producto> ListaProductos, Producto c)
+        public void PagoConTarjeta(double[] Precios)
         {
+            for (int i = 0; i < Precios.Length; i++)
+            {
+                TotalDinero += Precios[i];
+            }
             Console.WriteLine("Introduce el numerode tu tarjeta: ");
             string num_Targeta = Console.ReadLine();
             Console.WriteLine("Introduce tu saldo:");
@@ -20,27 +25,17 @@ namespace ConsoleApp1
             Console.WriteLine("Introduce el codigo de seguridad (****)");
             int cod_Seguridad = int.Parse(Console.ReadLine());
 
-            if (c.Precio_unidad_producto <= saldo)
+            if (TotalDinero <= saldo)
             {
-                saldo = saldo - c.Precio_unidad_producto;
+                saldo = saldo - TotalDinero;
                 Console.WriteLine($"Tu saldo actual es: {saldo}");
-                if (c.Unidades_producto >= 1)
-                {
-                    ListaProductos.Remove(c);
-                    Console.WriteLine("Se han agotado las existencias del producto!!");
-                    Console.ReadKey();
-                }
-                else
-                {
-                    c.Unidades_producto = c.Unidades_producto - 1;
-                    Console.WriteLine($"Queda una unidad menos del Producto {c.Nombre_producto}");
-                    Console.ReadKey();
-                }
+                Console.WriteLine("Se han comprado los productos con exito");
+                Console.ReadLine();
             }
             else
             {
                 Console.WriteLine("Su saldo es insuficiente, no se puede comprar el articulo");
-                Console.ReadKey();
+                Console.ReadLine();
             }
         }
     }

@@ -10,7 +10,7 @@ namespace ConsoleApp1
 {
     internal class PagoEfectivo
     {
-
+        public double TotalDinero { get; set; }
         public static double[] Monedas = new double[]
         {
             0.01,
@@ -31,49 +31,38 @@ namespace ConsoleApp1
         };
 
 
-        public void PagarConEfectivo(List<Producto> ListaProductos, Producto c)
+        public void PagarConEfectivo(double[] Precios)
         {
-            
+            for (int i = 0; i < Precios.Length; i++)
+            {
+                TotalDinero += Precios[i];
+            }
             do
             {
                 MostrarTiposDeMonedas();
                 Console.WriteLine("Selecciona que moneda o billete quieres introducir: ");
                 int opcion = int.Parse(Console.ReadLine());
-                c.Precio_unidad_producto = c.Precio_unidad_producto - Monedas[opcion];
+                TotalDinero = TotalDinero - Monedas[opcion];
 
-                if(c.Precio_unidad_producto > 0)
+                if(TotalDinero > 0)
                 {
-                    Console.WriteLine($"Le quedan por pagar {c.Precio_unidad_producto}");
+                    Console.WriteLine($"Le quedan por pagar {TotalDinero}");
                     Console.ReadKey();
 
-                }else if(c.Precio_unidad_producto < 0)
+                }else if(TotalDinero < 0)
                 {
 
-                    Console.WriteLine($"Le han sobrado {-c.Precio_unidad_producto}");
+                    Console.WriteLine($"Le han sobrado {-TotalDinero}");
                     Console.ReadKey();
-                    if(c.Unidades_producto > 1)
-                    {
-                        c.Unidades_producto = c.Unidades_producto - 1;
-                    }
-                    else
-                    {
-                        ListaProductos.Remove(c);
-                    }
+                    
                 }
                 else
                 {
                     Console.WriteLine("No hay cambio, disfrute de su producto!");
                     Console.ReadKey();
-                    if (c.Unidades_producto > 1)
-                    {
-                        c.Unidades_producto = c.Unidades_producto - 1;
-                    }
-                    else
-                    {
-                        ListaProductos.Remove(c);
-                    }
+                    
                 }
-            } while (c.Precio_unidad_producto >= 0);
+            } while (TotalDinero > 0);
         }
 
         private void MostrarTiposDeMonedas()
