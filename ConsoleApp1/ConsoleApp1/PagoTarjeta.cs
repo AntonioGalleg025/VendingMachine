@@ -20,11 +20,11 @@ namespace ConsoleApp1
             Console.WriteLine("Introduce el codigo de seguridad (****)");
             int cod_Seguridad = int.Parse(Console.ReadLine());
 
-            if (c.Precio <= saldo)
+            if (c.Precio_unidad_producto <= saldo)
             {
-                saldo = saldo - c.Precio;
+                saldo = saldo - c.Precio_unidad_producto;
                 Console.WriteLine($"Tu saldo actual es: {saldo}");
-                if (c.Unidades >= 1)
+                if (c.Unidades_producto >= 1)
                 {
                     ListaProductos.Remove(c);
                     Console.WriteLine("Se han agotado las existencias del producto!!");
@@ -32,8 +32,8 @@ namespace ConsoleApp1
                 }
                 else
                 {
-                    c.Unidades = c.Unidades - 1;
-                    Console.WriteLine($"Queda una unidad menos del Producto {c.Nombre}");
+                    c.Unidades_producto = c.Unidades_producto - 1;
+                    Console.WriteLine($"Queda una unidad menos del Producto {c.Nombre_producto}");
                     Console.ReadKey();
                 }
             }

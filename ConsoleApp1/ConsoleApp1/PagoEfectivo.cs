@@ -39,21 +39,21 @@ namespace ConsoleApp1
                 MostrarTiposDeMonedas();
                 Console.WriteLine("Selecciona que moneda o billete quieres introducir: ");
                 int opcion = int.Parse(Console.ReadLine());
-                c.Precio = c.Precio - Monedas[opcion];
+                c.Precio_unidad_producto = c.Precio_unidad_producto - Monedas[opcion];
 
-                if(c.Precio > 0)
+                if(c.Precio_unidad_producto > 0)
                 {
-                    Console.WriteLine($"Le quedan por pagar {c.Precio}");
+                    Console.WriteLine($"Le quedan por pagar {c.Precio_unidad_producto}");
                     Console.ReadKey();
 
-                }else if(c.Precio < 0)
+                }else if(c.Precio_unidad_producto < 0)
                 {
 
-                    Console.WriteLine($"Le han sobrado {-c.Precio}");
+                    Console.WriteLine($"Le han sobrado {-c.Precio_unidad_producto}");
                     Console.ReadKey();
-                    if(c.Unidades > 1)
+                    if(c.Unidades_producto > 1)
                     {
-                        c.Unidades = c.Unidades - 1;
+                        c.Unidades_producto = c.Unidades_producto - 1;
                     }
                     else
                     {
@@ -64,16 +64,16 @@ namespace ConsoleApp1
                 {
                     Console.WriteLine("No hay cambio, disfrute de su producto!");
                     Console.ReadKey();
-                    if (c.Unidades > 1)
+                    if (c.Unidades_producto > 1)
                     {
-                        c.Unidades = c.Unidades - 1;
+                        c.Unidades_producto = c.Unidades_producto - 1;
                     }
                     else
                     {
                         ListaProductos.Remove(c);
                     }
                 }
-            } while (c.Precio >= 0);
+            } while (c.Precio_unidad_producto >= 0);
         }
 
         private void MostrarTiposDeMonedas()

@@ -17,7 +17,7 @@ namespace ConsoleApp1
 
         //donde esta esto ??
 
-        public int Nombre_producto { get; set; }
+        public int Id { get; set; }
 
         public string Nombre_producto { get; set; }
 
@@ -33,15 +33,15 @@ namespace ConsoleApp1
             Unidades_producto = unidades;
             Precio_unidad_producto = precio;
             descripción_del_producto = descripcion;
-            Nombre_producto = id;
+            Id = id;
         }
 
         public virtual void NuevoProducto(List<Producto> ListaProductos) {
             
             Console.WriteLine("---------------------Vamos a agregar un producto--------------------");
-            Nombre_producto = ListaProductos.Count() + 1;
+            Id = ListaProductos.Count() + 1;
             Console.WriteLine("\nIntroduce el nombre de su producto: ");
-            Nombre = Console.ReadLine();
+            Nombre_producto = Console.ReadLine();
             Console.WriteLine("\nIntroduce el numero de unidades del producto: ");
             Unidades_producto = int.Parse(Console.ReadLine());
             Console.WriteLine("\nCual es el precio por unidad del producto?: ");
@@ -52,13 +52,13 @@ namespace ConsoleApp1
 
         public virtual string MostrarDetalles()
         {
-            return $"({Nombre_producto}) Nombre: {Nombre} \n\tUnidades disponibles: {Unidades_producto} \n\tPrecio: {Precio_unidad_producto} euros " +
+            return $"({Nombre_producto}) Nombre: {Nombre_producto} \n\tUnidades disponibles: {Unidades_producto} \n\tPrecio: {Precio_unidad_producto} euros " +
                 $"\n\tDescripción: {descripción_del_producto}";
         }
 
         public virtual string MostrarUnElemento()
         {
-            return $"({Id}) Nombre: {Nombre}\n\tUnidades disponibles: {Unidades}\n\tPrecio: {Precio} euros";
+            return $"({Id}) Nombre: {Nombre_producto}\n\tUnidades disponibles: {Unidades_producto}\n\tPrecio: {Precio_unidad_producto} euros";
         }
     }
 }

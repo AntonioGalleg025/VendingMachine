@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class MaquinaVendig
+    internal class Maquina
     {
         public List<Producto> ListaProductos = new List<Producto>();
 
-        public MaquinaVendig() { }
+        public Maquina() { }
 
         public void ComprarProducto()
         {
