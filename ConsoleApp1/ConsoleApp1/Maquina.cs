@@ -21,7 +21,7 @@ namespace ConsoleApp1
             { 
                 if (c.Id == Id)
                 {
-                    Console.WriteLine("Cual es el metodo de pago deseado: 1.Efectivo  2.Targeta ");
+                    Console.WriteLine("Cual es el metodo de pago deseado: 1.Efectivo  2.Tarjeta ");
                     int option = int.Parse(Console.ReadLine());
 
                     switch(option) 
