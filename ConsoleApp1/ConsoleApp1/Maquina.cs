@@ -21,7 +21,7 @@ namespace ConsoleApp1
             { 
                 if (c.Id == Id)
                 {
-                    Console.WriteLine("Cual es el metodo de pago deseado: 1.Efectivo  2.Targeta ");
+                    Console.WriteLine("Cual es el metodo de pago deseado: 1.Efectivo  2.Tarjeta ");
                     int option = int.Parse(Console.ReadLine());
 
                     switch(option) 
@@ -89,30 +89,6 @@ namespace ConsoleApp1
             }
         }
 
-        public void ListarElectronico()
-        {
-            Console.WriteLine("---------------------Productos electrónicos--------------------");
-            Console.WriteLine();
-            foreach (Producto p in ListaProductos)
-            {
-                if (p is ProductoElectronico)
-                {
-                    Console.WriteLine(p.MostrarUnElemento());
-                }
-            }
-        }
-
-        public void ListarAlimenticios()
-        {
-            Console.WriteLine("---------------------Productos alimenticios--------------------");
-            Console.WriteLine();
-            foreach (Producto p in ListaProductos)
-            {
-                if (p is ProductoAlimenticio)
-                {
-                    Console.WriteLine(p.MostrarUnElemento());
-                }
-            }
-        }
+        
     }
 }
