@@ -20,6 +20,7 @@ namespace ConsoleApp1
             Console.ReadKey();
             do
             {
+                /*Menú con opciones*/
                 Console.Clear();
                 Console.WriteLine("1-Comprar un producto");
                 Console.WriteLine("2-Mostrar informacion de un producto");
@@ -30,29 +31,39 @@ namespace ConsoleApp1
                 Opcion = int.Parse(Console.ReadLine());
                 switch(Opcion)
                 {
+                    
                     case 1:
+                        /*Llamamos a la función en la clase máquina para comprar producto*/
                         maquina.ComprarProducto();
                         break;
 
                     case 2:
+                        /*Llamamos a las funciones para hacer las listas reducidas*/
+                        Console.Clear();
                         maquina.ListarPreciosos();
                         maquina.ListarElectronicos();
                         maquina.ListarAlimenticios();
+                        /*Pedimos el id del producto que queremos ver detalladamente*/
+                        Console.WriteLine("Introduce el ID del producto que desea ver: ");
+                        int id_producto = int.Parse(Console.ReadLine());
                         Console.ReadKey();
                         break;
 
                     case 3:
                         Console.Clear();
                         Console.WriteLine("La opcion introducida es solo para administradores");
+                        /*Pedimos el código para los administradores*/
                         Console.WriteLine("Introduce el codigo secreto para continuar");
                         CodigoSecreto = Console.ReadLine();
                         if (CodigoSecreto == "0000")
                         {
+                            /*En caso de que el código sea correcto añadimos un producto*/
                             Console.WriteLine("Contraseña correcta!");
                             maquina.AniadirProducto();
                         }
                         else
                         {
+                            /*En caso de que sea incorrecto el código */
                             Console.WriteLine("No ha introducido el codigo correcto");
                             Console.WriteLine("Saliendo al menu principal...");
                             System.Threading.Thread.Sleep(1000);
@@ -62,10 +73,12 @@ namespace ConsoleApp1
                     case 4:
                         Console.Clear();
                         Console.WriteLine("La opcion introducida es solo para administradores");
+                        /*Pedimos el código para los administradores*/
                         Console.WriteLine("Introduce el codigo secreto para continuar");
                         CodigoSecreto = Console.ReadLine();
                         if(CodigoSecreto == "0000")
                         {
+                            /*En caso del que el código sea correcto añadimos una carga completa de productos*/
                             Console.WriteLine("Contraseña correcta!");
                             //Implementar el metodo correspondiente
                         }
