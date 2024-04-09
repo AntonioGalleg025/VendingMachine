@@ -20,8 +20,10 @@ namespace ConsoleApp1
              
         }
         public ProductoElectronico() { }
+        /*Función para completar de añadir los productos electrónicos*/
         public override void NuevoProducto(List<Producto> L)
         {
+            /*Ponemos la parte del padre*/
             base.NuevoProducto(L);
             TipoProducto = "Producto Electronico";
             Console.WriteLine("Para indicar los tipos de materiales de su producto electronico," +
