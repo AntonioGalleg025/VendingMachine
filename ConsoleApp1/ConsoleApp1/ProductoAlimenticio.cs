@@ -6,21 +6,28 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class ProductoAlimenticio: Producto
+    internal class ProductoAlimenticio : Producto
     {
-        public string InfoNutricional {  get; set; }
+        public string InfoNutricional { get; set; }
         public ProductoAlimenticio() { }
 
-        public ProductoAlimenticio(string infoNutricional, int id, string nombre, int unidades, double precio, string descripcion)
-        : base(id, nombre, unidades, precio, descripcion)
+        public ProductoAlimenticio(int id, string nombre, string tipoproducto, int unidades,
+            double precio, string descripcion, string infonutricional)
+            : base(id, nombre, tipoproducto, unidades, precio, descripcion)
         {
-            InfoNutricional = infoNutricional;
+            TipoProducto = tipoproducto;
+            InfoNutricional = infonutricional;
+            Id = id;
+            Nombre_producto = nombre;
+            Unidades_producto = unidades;
+            Precio_unidad_producto = precio;
+            descripción_del_producto = descripcion;
         }
 
 
-        public override void NuevoProducto(List<Producto> L)
+        public override void NuevoProducto(List<Producto> L, int Comprobacion)
         {
-            base.NuevoProducto(L);
+            base.NuevoProducto(L, Comprobacion);
             TipoProducto = "Producto Alimenticio";
             Console.WriteLine("Introduce una descripcion a cerca de la informacion nutricional de su producto");
             InfoNutricional = Console.ReadLine();

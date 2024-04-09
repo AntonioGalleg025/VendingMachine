@@ -6,45 +6,45 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class ProductoElectronico: Producto
+    internal class ProductoElectronico : Producto
     {
-        public bool Pilas {  get; set; }
-
-        public string[] Materiales { get; set; }
-
+        public bool Pilas { get; set; }
+        public string Materiales { get; set; }
         public bool Precargado { get; set; }
 
-        public ProductoElectronico(string infoNutricional, int id, string nombre, int unidades, double precio, string descripcion)
-        : base(id, nombre, unidades, precio, descripcion)
+        public ProductoElectronico(int id, string nombre, string tipoproducto, int unidades,
+            double precio, string descripcion, bool pilas, bool precargado, string materiales)
+            : base(id, nombre, tipoproducto, unidades, precio, descripcion)
         {
-             
+            TipoProducto = tipoproducto;
+            Pilas = pilas;
+            Materiales = materiales;
+            Precargado = precargado;
+            Id = id;
+            Nombre_producto = nombre;
+            Unidades_producto = unidades;
+            Precio_unidad_producto = precio;
+            descripción_del_producto = descripcion;
         }
         public ProductoElectronico() { }
         /*Función para completar de añadir los productos electrónicos*/
-        public override void NuevoProducto(List<Producto> L)
+        public override void NuevoProducto(List<Producto> L, int Comprobacion)
         {
             /*Ponemos la parte del padre*/
-            base.NuevoProducto(L);
+            base.NuevoProducto(L, Comprobacion);
             TipoProducto = "Producto Electronico";
-            Console.WriteLine("Para indicar los tipos de materiales de su producto electronico," +
-            " primero indique de cuantos materiales esta conformado: ");
-            int CantidadMateriales = int.Parse(Console.ReadLine());
-
-            
-            for(int i = 0; i < CantidadMateriales; i++)
-            {
-                Console.WriteLine($"Indique el material {i}: ");
-                Materiales[i] = Console.ReadLine();
-            }
+            Console.WriteLine("Indique los materiales separados por comas: ");
+            Materiales = Console.ReadLine();
             Console.WriteLine("Materiales añadidos con exito, pulse una tecla para continuar");
             Console.ReadKey();
 
             Console.WriteLine("El producto electronico incluye pilas?(1 = si || 2 = no): ");
             int opcion = int.Parse(Console.ReadLine());
-            if(opcion == 1)
+            if (opcion == 1)
             {
                 Pilas = true;
-            }else if(opcion == 2)
+            }
+            else if (opcion == 2)
             {
                 Pilas = false;
             }

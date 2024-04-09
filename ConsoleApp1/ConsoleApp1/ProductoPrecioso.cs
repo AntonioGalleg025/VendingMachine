@@ -6,23 +6,30 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class ProductoPrecioso: Producto
+    internal class ProductoPrecioso : Producto
     {
-        public string TipoMaterial {  get; set; }
-        public double Peso {  get; set; }
+        public string TipoMaterial { get; set; }
+        public double Peso { get; set; }
 
         public ProductoPrecioso() { }
 
-        public ProductoPrecioso(string tipoMaterial, double peso, int id, string nombre, int unidades, double precio, string descripcion) 
-        :base(id, nombre, unidades, precio, descripcion)
+        public ProductoPrecioso(int id, string nombre, string tipoproducto, int unidades,
+            double precio, string descripcion, string tipoMaterial, double peso)
+            : base(id, nombre, tipoproducto, unidades, precio, descripcion)
         {
+            TipoProducto = tipoproducto;
             TipoMaterial = tipoMaterial;
             Peso = peso;
+            Id = id;
+            Nombre_producto = nombre;
+            Unidades_producto = unidades;
+            Precio_unidad_producto = precio;
+            descripción_del_producto = descripcion;
         }
 
-        public override void NuevoProducto(List<Producto> L)
+        public override void NuevoProducto(List<Producto> L, int Comprobacion)
         {
-            base.NuevoProducto(L);
+            base.NuevoProducto(L, Comprobacion);
             TipoProducto = "Producto Precioso";
             Console.WriteLine("\nIntroduce el tipo de material del producto precioso: ");
             TipoMaterial = Console.ReadLine();

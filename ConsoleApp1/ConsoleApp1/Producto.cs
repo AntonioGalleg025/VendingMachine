@@ -8,9 +8,7 @@ namespace ConsoleApp1
 {
     abstract class Producto
     {
-        // Constructor
         public Producto() { }
-        // Propiedades
         public int Id { get; set; }
         public string TipoProducto { get; set; }
         public string Nombre_producto { get; set; }
@@ -20,8 +18,10 @@ namespace ConsoleApp1
 
         public string descripción_del_producto { get; set; }
 
-        public Producto(int id, string nombre, int unidades, double precio, string descripcion)
+        public Producto(int id, string nombre, string tipoproducto, int unidades,
+            double precio, string descripcion)
         {
+            TipoProducto = tipoproducto;
             Nombre_producto = nombre;
             Unidades_producto = unidades;
             Precio_unidad_producto = precio;
@@ -30,9 +30,8 @@ namespace ConsoleApp1
         }
 
         /*Función para añadir un nuevo producto*/
-        public virtual void NuevoProducto(List<Producto> ListaProductos) 
+        public virtual void NuevoProducto(List<Producto> ListaProductos, int Comprobacion)
         {
-           
             Console.WriteLine("---------------------Vamos a agregar un producto--------------------");
             /*id del producto*/
             Id = ListaProductos.Count() + 1;
@@ -40,8 +39,13 @@ namespace ConsoleApp1
             Console.WriteLine("\nIntroduce el nombre de su producto: ");
             Nombre_producto = Console.ReadLine();
             /*Introducir el número de unidades de cada producto (el máximo siendo 12)*/
-            Console.WriteLine("\nIntroduce el numero de unidades del producto: ");
-            Unidades_producto = int.Parse(Console.ReadLine());
+            do
+            {
+                Console.WriteLine("\nIntroduce el numero de unidades del producto: ");
+                Unidades_producto = int.Parse(Console.ReadLine());
+
+            } while (Unidades_producto > 12 || Comprobacion + Unidades_producto > 12);
+
             /*introducimeos el precio que vale cada unidad*/
             Console.WriteLine("\nCual es el precio por unidad del producto?: ");
             Precio_unidad_producto = double.Parse(Console.ReadLine());

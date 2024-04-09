@@ -10,16 +10,12 @@ namespace ConsoleApp1
     {
         public double TotalDinero { get; set; }
 
-
-        // Método para realizar un pago con tarjeta
         public void PagoConTarjeta(double[] Precios)
         {
-            // Sumamos el precio de cada producto al total
             for (int i = 0; i < Precios.Length; i++)
             {
                 TotalDinero += Precios[i];
             }
-            // Pedimos al usuario los datos de la tarjeta
             Console.WriteLine("Introduce el numerode tu tarjeta: ");
             string num_Targeta = Console.ReadLine();
             Console.WriteLine("Introduce tu saldo:");
@@ -29,7 +25,6 @@ namespace ConsoleApp1
             Console.WriteLine("Introduce el codigo de seguridad (****)");
             int cod_Seguridad = int.Parse(Console.ReadLine());
 
-            // Comprobamos si el saldo es suficiente para realizar el pago
             if (TotalDinero <= saldo)
             {
                 saldo = saldo - TotalDinero;

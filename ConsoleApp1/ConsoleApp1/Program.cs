@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace ConsoleApp1
      
      
      Notas:
-       *Hacer infinita la compra de productos 
+       *Ver por que no guarda los productos electronicos en el fichero
      
      
      */
@@ -41,9 +42,9 @@ namespace ConsoleApp1
                 Console.WriteLine("5-Salir del programa");
                 Console.WriteLine("\n\nSeleccione una opcion");
                 Opcion = int.Parse(Console.ReadLine());
-                switch(Opcion)
+                switch (Opcion)
                 {
-                    
+
                     case 1:
                         /*Llamamos a la función en la clase máquina para comprar producto*/
                         Console.Clear();
@@ -83,11 +84,11 @@ namespace ConsoleApp1
                         /*Pedimos el código para los administradores*/
                         Console.WriteLine("Introduce el codigo secreto para continuar");
                         CodigoSecreto = Console.ReadLine();
-                        if(CodigoSecreto == "0000")
+                        if (CodigoSecreto == "0000")
                         {
                             /*En caso del que el código sea correcto añadimos una carga completa de productos*/
                             Console.WriteLine("Contraseña correcta!");
-                            //Implementar el metodo correspondiente
+
                         }
                         else
                         {
@@ -98,14 +99,14 @@ namespace ConsoleApp1
                         }
                         break;
 
-                    default: 
+                    default:
                         /*Cuando ponga un número del 1 al 5*/
-                        Console.WriteLine("Opcion incorrecta"); 
+                        Console.WriteLine("Opcion incorrecta");
                         break;
                 }
 
-            } while(Opcion != 5);
-            if(Opcion == 5)
+            } while (Opcion != 5);
+            if (Opcion == 5)
             {
                 /*En caso de que ponga el 5*/
                 maquina.GuardarContenidoArchivo();

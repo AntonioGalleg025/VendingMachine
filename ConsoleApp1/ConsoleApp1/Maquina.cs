@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
+using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,15 +12,16 @@ namespace ConsoleApp1
     {
         public List<Producto> ListaProductos = new List<Producto>();
         public List<Producto> CarritoCompra = new List<Producto>();
-        public int Salir {  get; set; }
+        public int Salir { get; set; }
         public Maquina() { }
         public double[] Precios { get; set; }
+
         public void ComprarProducto()
         {
             Precios = new double[100];
             int i = 0;
             do
-            { 
+            {
                 Console.WriteLine("Escribe el ID del producto:");
                 int Id = int.Parse(Console.ReadLine());
 
@@ -38,27 +39,28 @@ namespace ConsoleApp1
 
             } while (Salir != 1);
 
-            if(CarritoCompra.Count > 0)
+            if (CarritoCompra.Count > 0)
             {
                 Console.WriteLine($"Tienes {CarritoCompra.Count} en tu cesta, quiere proceder con el pago?(1 = si || 2 = no): ");
                 int opcion = int.Parse(Console.ReadLine());
-                if(opcion == 1)
+                if (opcion == 1)
                 {
-                    foreach(Producto c in CarritoCompra)
+                    foreach (Producto c in CarritoCompra)
                     {
-                        foreach(Producto l in ListaProductos)
+                        foreach (Producto l in ListaProductos)
                         {
-                            if(c.Id == l.Id)
+                            if (c.Id == l.Id)
                             {
-                                if(l.Unidades_producto > 1)
+                                if (l.Unidades_producto > 1)
                                 {
                                     l.Unidades_producto = l.Unidades_producto - 1;
                                     Precios[i] = l.Precio_unidad_producto;
                                     i++;
                                     break;
                                 }
-                                else if(l.Unidades_producto == 1) {
-                                    
+                                else if (l.Unidades_producto == 1)
+                                {
+
                                     Precios[i] = l.Precio_unidad_producto;
                                     i++;
                                     ListaProductos.Remove(l);
@@ -69,7 +71,7 @@ namespace ConsoleApp1
                     }
                     Pagar();
                 }
-                else if(opcion == 2)
+                else if (opcion == 2)
                 {
                     CarritoCompra.Clear();
                 }
@@ -100,56 +102,64 @@ namespace ConsoleApp1
         }
 
 
-        public void AniadirProducto() {
-
+        public void AniadirProducto()
+        {
+            int Comprobacion = ComprobarCantidadProductos();
             Console.WriteLine("1-Nuevo producto precioso");
             Console.WriteLine("2-Nuevo producto alimenticio");
             Console.WriteLine("3-Nuevo producto electronico");
             Console.WriteLine("Introduce el producto que quieres agregar: ");
             int opcion = int.Parse(Console.ReadLine());
+
             switch (opcion)
             {
                 case 1:
-                    if(ListaProductos.Count >= 12){
+                    if (Comprobacion >= 12)
+                    {
 
                         Console.WriteLine("Lo siento, la maquina esta llena");
                         Console.ReadKey();
                     }
-                    else{
+                    else
+                    {
+
                         ProductoPrecioso productoPrecioso = new ProductoPrecioso();
-                        productoPrecioso.NuevoProducto(ListaProductos);
+                        productoPrecioso.NuevoProducto(ListaProductos, Comprobacion);
                         ListaProductos.Add(productoPrecioso);
                     }
                     break;
 
                 case 2:
-                    if (ListaProductos.Count >= 12)
-                    {
-                        Console.WriteLine("Lo siento, la maquina esta llena");
-                        Console.ReadKey();
-                    }
-                    else {
-                        ProductoAlimenticio productoAlimenticio = new ProductoAlimenticio();
-                        productoAlimenticio.NuevoProducto(ListaProductos);
-                        ListaProductos.Add(productoAlimenticio);
-                    }
-                    break;
-
-                case 3:
-
-                    if (ListaProductos.Count >= 12)
+                    if (Comprobacion >= 12)
                     {
                         Console.WriteLine("Lo siento, la maquina esta llena");
                         Console.ReadKey();
                     }
                     else
                     {
+
+                        ProductoAlimenticio productoAlimenticio = new ProductoAlimenticio();
+                        productoAlimenticio.NuevoProducto(ListaProductos, Comprobacion);
+                        ListaProductos.Add(productoAlimenticio);
+                    }
+                    break;
+
+                case 3:
+
+                    if (Comprobacion >= 12)
+                    {
+                        Console.WriteLine("Lo siento, la maquina esta llena");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+
                         ProductoElectronico productoElectronico = new ProductoElectronico();
-                        productoElectronico.NuevoProducto(ListaProductos);
+                        productoElectronico.NuevoProducto(ListaProductos, Comprobacion);
                         ListaProductos.Add(productoElectronico);
                     }
-                break;
-                    
+                    break;
+
 
                 default:
                     Console.WriteLine("Opcion incorrecta, pulse una tecla para continuar");
@@ -159,7 +169,7 @@ namespace ConsoleApp1
 
         public void ListarTodos()
         {
-            
+
             Console.WriteLine();
             foreach (Producto p in ListaProductos)
             {
@@ -168,12 +178,14 @@ namespace ConsoleApp1
                     Console.WriteLine("---------------------Productos preciosos--------------------");
                     Console.WriteLine(p.MostrarUnElemento());
 
-                }else if (p is ProductoElectronico)
+                }
+                else if (p is ProductoElectronico)
                 {
                     Console.WriteLine("---------------------Productos electrónicos--------------------");
                     Console.WriteLine(p.MostrarUnElemento());
 
-                }else if (p is ProductoAlimenticio)
+                }
+                else if (p is ProductoAlimenticio)
                 {
                     Console.WriteLine("---------------------Productos alimenticios--------------------");
                     Console.WriteLine(p.MostrarUnElemento());
@@ -187,22 +199,25 @@ namespace ConsoleApp1
             /*Pedimos el id del producto que queremos ver detalladamente*/
             Console.WriteLine("\nIntroduce el ID del producto que desea ver: ");
             int id_producto = int.Parse(Console.ReadLine());
-            foreach(Producto p in ListaProductos)
+            foreach (Producto p in ListaProductos)
             {
-                if(id_producto == p.Id)
+                if (id_producto == p.Id)
                 {
-                    if(p is ProductoPrecioso)
+                    if (p is ProductoPrecioso)
                     {
                         Console.WriteLine(p.MostrarDetalles());
-                        
+
                         break;
 
-                    }else if(p is ProductoElectronico) {
-                    
+                    }
+                    else if (p is ProductoElectronico)
+                    {
+
                         Console.WriteLine(p.MostrarDetalles());
                         break;
 
-                    }else if( p is ProductoAlimenticio)
+                    }
+                    else if (p is ProductoAlimenticio)
                     {
                         Console.WriteLine(p.MostrarDetalles());
                         break;
@@ -212,22 +227,23 @@ namespace ConsoleApp1
             Console.ReadLine();
         }
 
-        private int ComprobarCantidadProducto()
+        private int ComprobarCantidadProductos()
         {
-            int contador = 0;
-            int sumatorio = 0;
-            int[] CantidadesUnidades = new int[100];
+            int Contador = 0;
+            int Sumatorio = 0;
+            int[] CantidadUnidades = new int[100];
 
             foreach (Producto p in ListaProductos)
             {
-                CantidadesUnidades[contador] = p.Unidades_producto;
-                contador++;
+                CantidadUnidades[Contador] = p.Unidades_producto;
+                Contador++;
             }
-            for (int i = 0; i < CantidadesUnidades.Count(); i++)
+            for (int i = 0; i < CantidadUnidades.Count(); i++)
             {
-                sumatorio += CantidadesUnidades[i]
+                Sumatorio += CantidadUnidades[i];
             }
-            return sumatorio;
+
+            return Sumatorio;
         }
 
         public void CargarContenidoArchivo()
@@ -264,36 +280,35 @@ namespace ConsoleApp1
             }
             sr.Close();
             File.Delete("Productos.txt");
-
         }
 
         public void GuardarContenidoArchivo()
+        {
+            FileStream fs = new FileStream($"Productos.txt", FileMode.OpenOrCreate, FileAccess.Write);
+            StreamWriter sw = new StreamWriter(fs);
+            foreach (Producto p in ListaProductos)
             {
-                FileStream fs = new FileStream($"Productos.txt", FileMode.OpenOrCreate, FileAccess.Write);
-                StreamWriter sw = new StreamWriter(fs);
-                foreach (Producto p in ListaProductos)
+                if (p is ProductoPrecioso)
                 {
-                    if (p is ProductoPrecioso)
-                    {
-                        sw.WriteLine(p.GuardarDatosFichero());
+                    sw.WriteLine(p.GuardarDatosFichero());
 
 
-                    }
-                    else if (p is ProductoElectronico)
-                    {
-
-                        sw.WriteLine(p.GuardarDatosFichero());
-
-
-                    }
-                    else if (p is ProductoAlimenticio)
-                    {
-
-                        sw.WriteLine(p.GuardarDatosFichero());
-
-                    }
                 }
-                sw.Close();
+                else if (p is ProductoElectronico)
+                {
+
+                    sw.WriteLine(p.GuardarDatosFichero());
+
+
+                }
+                else if (p is ProductoAlimenticio)
+                {
+
+                    sw.WriteLine(p.GuardarDatosFichero());
+
+                }
             }
+            sw.Close();
         }
     }
+}
