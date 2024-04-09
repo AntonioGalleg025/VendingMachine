@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -209,6 +210,24 @@ namespace ConsoleApp1
                 }
             }
             Console.ReadLine();
+        }
+
+        private int ComprobarCantidadProducto()
+        {
+            int contador = 0;
+            int sumatorio = 0;
+            int[] CantidadesUnidades = new int[100];
+
+            foreach (Producto p in ListaProductos)
+            {
+                CantidadesUnidades[contador] = p.Unidades_producto;
+                contador++;
+            }
+            for (int i = 0; i < CantidadesUnidades.Count(); i++)
+            {
+                sumatorio += CantidadesUnidades[i]
+            }
+            return sumatorio;
         }
 
         public void CargarContenidoArchivo()
