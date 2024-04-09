@@ -245,6 +245,36 @@ namespace ConsoleApp1
             }
             sr.Close();
             File.Delete("Productos.txt");
+
+        }
+
+        public void GuardarContenidoArchivo()
+            {
+                FileStream fs = new FileStream($"Productos.txt", FileMode.OpenOrCreate, FileAccess.Write);
+                StreamWriter sw = new StreamWriter(fs);
+                foreach (Producto p in ListaProductos)
+                {
+                    if (p is ProductoPrecioso)
+                    {
+                        sw.WriteLine(p.GuardarDatosFichero());
+
+
+                    }
+                    else if (p is ProductoElectronico)
+                    {
+
+                        sw.WriteLine(p.GuardarDatosFichero());
+
+
+                    }
+                    else if (p is ProductoAlimenticio)
+                    {
+
+                        sw.WriteLine(p.GuardarDatosFichero());
+
+                    }
+                }
+                sw.Close();
+            }
         }
     }
-}
