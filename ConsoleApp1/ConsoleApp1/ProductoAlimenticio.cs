@@ -37,5 +37,10 @@ namespace ConsoleApp1
         {
             return base.MostrarUnElemento();
         }
+
+        public override string GuardarDatosFichero()
+        {
+            return base.GuardarDatosFichero() + $"{InfoNutricional}";
+        }
     }
 }
