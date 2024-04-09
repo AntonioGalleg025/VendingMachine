@@ -21,6 +21,10 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             Maquina maquina = new Maquina();
+            if (File.Exists("Productos.txt"))
+            {
+                maquina.CargarContenidoArchivo();
+            }
             Console.WriteLine("Sea bienvenido a su Maquina de Vending");
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
@@ -104,6 +108,7 @@ namespace ConsoleApp1
             if(Opcion == 5)
             {
                 /*En caso de que ponga el 5*/
+                maquina.GuardarContenidoArchivo();
                 Console.WriteLine("Gracias por usar la maquina, esperamos verle pronto :)");
             }
         }

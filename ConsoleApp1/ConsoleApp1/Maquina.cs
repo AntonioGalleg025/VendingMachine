@@ -14,7 +14,6 @@ namespace ConsoleApp1
         public int Salir {  get; set; }
         public Maquina() { }
         public double[] Precios { get; set; }
-
         public void ComprarProducto()
         {
             Precios = new double[100];
