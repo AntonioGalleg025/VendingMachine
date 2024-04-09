@@ -62,5 +62,12 @@ namespace ConsoleApp1
             /*Esta función muestra los detalles de los productos de forma reducida*/
             return $"({Id}) Nombre: {Nombre_producto}\n\tUnidades disponibles: {Unidades_producto}\n\tPrecio: {Precio_unidad_producto} euros";
         }
+
+        public virtual string GuardarDatosFichero()
+        {
+            return $"{Id};{Nombre_producto};{TipoProducto};{Unidades_producto};" +
+                        $"{Precio_unidad_producto};" +
+                        $"{descripción_del_producto};";
+        }
     }
 }
