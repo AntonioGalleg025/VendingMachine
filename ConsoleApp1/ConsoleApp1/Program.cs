@@ -11,7 +11,7 @@ namespace ConsoleApp1
      
      
      Notas:
-       *Ver por que no guarda los productos electronicos en el fichero
+       *
      
      
      */
@@ -22,10 +22,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             Maquina maquina = new Maquina();
-            if (File.Exists("Productos.txt"))
-            {
-                maquina.CargarContenidoArchivo();
-            }
+            
             Console.WriteLine("Sea bienvenido a su Maquina de Vending");
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
@@ -88,7 +85,10 @@ namespace ConsoleApp1
                         {
                             /*En caso del que el código sea correcto añadimos una carga completa de productos*/
                             Console.WriteLine("Contraseña correcta!");
-
+                            if (File.Exists("Productos.txt"))
+                            {
+                                maquina.CargarContenidoArchivo();
+                            }
                         }
                         else
                         {
@@ -99,10 +99,14 @@ namespace ConsoleApp1
                         }
                         break;
 
+                    case 5:
+                        break;
+
                     default:
                         /*Cuando ponga un número del 1 al 5*/
                         Console.WriteLine("Opcion incorrecta");
                         break;
+                    
                 }
 
             } while (Opcion != 5);

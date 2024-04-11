@@ -31,11 +31,12 @@ namespace ConsoleApp1
         };
 
 
-        public void PagarConEfectivo(double[] Precios)
+        public void PagarConEfectivo(List<Producto> CarritoCompra)
         {
-            for (int i = 0; i < Precios.Length; i++)
+            
+            foreach(Producto p in CarritoCompra)
             {
-                TotalDinero += Precios[i];
+                TotalDinero = TotalDinero + p.Precio_unidad_producto;
             }
             do
             {

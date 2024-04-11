@@ -14,11 +14,8 @@ namespace ConsoleApp1
         public List<Producto> CarritoCompra = new List<Producto>();
         public int Salir { get; set; }
         public Maquina() { }
-        public double[] Precios { get; set; }
-
         public void ComprarProducto()
         {
-            Precios = new double[100];
             int i = 0;
             do
             {
@@ -34,7 +31,7 @@ namespace ConsoleApp1
                     }
                 }
 
-                Console.WriteLine("Quieres agregar otro producto?: ");
+                Console.WriteLine("Quieres agregar otro producto?(1 = no || 2 = si): ");
                 Salir = int.Parse(Console.ReadLine());
 
             } while (Salir != 1);
@@ -54,15 +51,10 @@ namespace ConsoleApp1
                                 if (l.Unidades_producto > 1)
                                 {
                                     l.Unidades_producto = l.Unidades_producto - 1;
-                                    Precios[i] = l.Precio_unidad_producto;
-                                    i++;
                                     break;
                                 }
                                 else if (l.Unidades_producto == 1)
                                 {
-
-                                    Precios[i] = l.Precio_unidad_producto;
-                                    i++;
                                     ListaProductos.Remove(l);
                                     break;
                                 }
@@ -90,12 +82,12 @@ namespace ConsoleApp1
             {
                 case 1:
                     PagoEfectivo NuevoPagoConEfectivo = new PagoEfectivo();
-                    NuevoPagoConEfectivo.PagarConEfectivo(Precios);
+                    NuevoPagoConEfectivo.PagarConEfectivo(CarritoCompra);
                     break;
 
                 case 2:
                     PagoTarjeta NuevoPagoConTarjeta = new PagoTarjeta();
-                    NuevoPagoConTarjeta.PagoConTarjeta(Precios);
+                    NuevoPagoConTarjeta.PagoConTarjeta(CarritoCompra);
                     break;
 
             }

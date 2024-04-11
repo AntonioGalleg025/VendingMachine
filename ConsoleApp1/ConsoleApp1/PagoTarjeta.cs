@@ -10,11 +10,11 @@ namespace ConsoleApp1
     {
         public double TotalDinero { get; set; }
 
-        public void PagoConTarjeta(double[] Precios)
+        public void PagoConTarjeta(List<Producto> CarritoCompra)
         {
-            for (int i = 0; i < Precios.Length; i++)
+            foreach (Producto p in CarritoCompra)
             {
-                TotalDinero += Precios[i];
+                TotalDinero = TotalDinero + p.Precio_unidad_producto;
             }
             Console.WriteLine("Introduce el numerode tu tarjeta: ");
             string num_Targeta = Console.ReadLine();
