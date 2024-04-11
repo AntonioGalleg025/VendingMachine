@@ -16,12 +16,11 @@ namespace ConsoleApp1
         public Maquina() { }
         public void ComprarProducto()
         {
-            int i = 0;
             do
             {
                 Console.WriteLine("Escribe el ID del producto:");
                 int Id = int.Parse(Console.ReadLine());
-
+                
                 foreach (Producto c in ListaProductos)
                 {
                     if (c.Id == Id)
@@ -75,7 +74,7 @@ namespace ConsoleApp1
         }
         public void Pagar()
         {
-            Console.WriteLine("Cual es el metodo de pago deseado: 1.Efectivo  2.Tarjeta ");
+            Console.WriteLine("Cual es el metodo de pago deseado(1.Efectivo  2.Tarjeta):  ");
             int option = int.Parse(Console.ReadLine());
 
             switch (option)
