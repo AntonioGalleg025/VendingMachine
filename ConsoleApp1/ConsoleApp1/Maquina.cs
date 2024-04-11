@@ -12,23 +12,53 @@ namespace ConsoleApp1
     {
         public List<Producto> ListaProductos = new List<Producto>();
         public List<Producto> CarritoCompra = new List<Producto>();
+        public List<Producto> ListaTemp = new List<Producto>();
         public int Salir { get; set; }
         public Maquina() { }
         public void ComprarProducto()
         {
+            foreach(Producto producto in ListaProductos)
+            {
+                ListaTemp.Add(producto);
+            }
             do
             {
                 Console.WriteLine("Escribe el ID del producto:");
                 int Id = int.Parse(Console.ReadLine());
+
                 
-                foreach (Producto c in ListaProductos)
-                {
-                    if (c.Id == Id)
+                    foreach (Producto c in ListaProductos)
                     {
-                        CarritoCompra.Add(c);
-                        break;
+                        foreach (Producto l in ListaTemp)
+                        {
+                            if (c.Id == Id && l.Unidades_producto > 0)
+                            {
+                            
+                                if (Id == l.Id)
+                                {
+                                    if (l.Unidades_producto > 1)
+                                    {
+                                        CarritoCompra.Add(c);
+                                        l.Unidades_producto = l.Unidades_producto - 1;
+                                    
+                                    }
+                                    else if (l.Unidades_producto == 1)
+                                    {
+                                        CarritoCompra.Add(c);
+                                        ListaTemp.Remove(l);
+                                    
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("No existen unidades de ese producto o ha indicado mal el producto");
+                                    break;
+                                }
+
+                                break;
+                            }
+                        }
                     }
-                }
 
                 Console.WriteLine("Quieres agregar otro producto?(1 = no || 2 = si): ");
                 Salir = int.Parse(Console.ReadLine());
@@ -270,7 +300,7 @@ namespace ConsoleApp1
                 }
             }
             sr.Close();
-            File.Delete("Productos.txt");
+            //File.Delete("Productos.txt");
         }
 
         public void GuardarContenidoArchivo()
