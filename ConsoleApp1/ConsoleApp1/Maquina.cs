@@ -10,46 +10,53 @@ namespace ConsoleApp1
 {
     internal class Maquina
     {
+        //Creamos las listas
         public List<Producto> ListaProductos = new List<Producto>();
         public List<Producto> CarritoCompra = new List<Producto>();
         public List<Producto> ListaTemp = new List<Producto>();
         public int Salir { get; set; }
-        public Maquina() { }
-        public void ComprarProducto()
+        
+        public Maquina() { }  //Constructor vacio 
+
+        
+        public void ComprarProducto()  //Metodo para comprar los productos 
         {
-            foreach(Producto producto in ListaProductos)
+            /
+            foreach (Producto producto in ListaProductos)  / Hacemos un bucle en el que recorremos ListaProductos
             {
-                ListaTemp.Add(producto);
+                
+                ListaTemp.Add(producto);  //Añadimos todo lo que conenga ListaProductos a ListaTemp
             }
+            
             do
             {
+                //Pedimos el id del producto y lo almacenamos en una variable 
                 Console.WriteLine("Escribe el ID del producto:");
                 int Id = int.Parse(Console.ReadLine());
 
-                
-                    foreach (Producto c in ListaProductos)
+                    foreach (Producto c in ListaProductos)   //Recorremos la lista ListaProductos en la variable local c.
                     {
-                        foreach (Producto l in ListaTemp)
+                        foreach (Producto l in ListaTemp)   //Recorremos la lista ListaTemp en la variable local l.
                         {
-                            if (c.Id == Id && l.Unidades_producto > 0)
-                            {
-                            
-                                if (Id == l.Id)
+                            if (c.Id == Id && l.Unidades_producto > 0) //Compara el Id de la lista de productos con el introducido por el cliente y comprueba hay existencias del producto.
+                            { 
+                                if (Id == l.Id)  //Comprueba que Id pedido por pantalla y el Id del la variable local l coinciden. Sino pasara al else.
                                 {
-                                    if (l.Unidades_producto > 1)
+                                    if (l.Unidades_producto > 1)  //Enta en el if cuando haya mas de un producto, sino pasara al else.
                                     {
-                                        CarritoCompra.Add(c);
-                                        l.Unidades_producto = l.Unidades_producto - 1;
-                                    
+                                       
+                                        CarritoCompra.Add(c);    //Añadimos el producto a la lista.
+                                        l.Unidades_producto = l.Unidades_producto - 1;  //Le restamos las unidades compradas a la lista temporal.
+
                                     }
-                                    else if (l.Unidades_producto == 1)
+                                    else if (l.Unidades_producto == 1)  //Comprueba que las unidades de la lista temporal es igual a uno.
                                     {
-                                        CarritoCompra.Add(c);
-                                        ListaTemp.Remove(l);
+                                        CarritoCompra.Add(c);  //Añadimos el producto a la lista.
+                                        ListaTemp.Remove(l);  //Borra la lista temporal.
                                     
                                     }
                                 }
-                                else
+                                else   // Se advierte por pantalla de ue no hay unidades 
                                 {
                                     Console.WriteLine("No existen unidades de ese producto o ha indicado mal el producto");
                                     break;
