@@ -63,12 +63,13 @@ namespace ConsoleApp1
 
         public virtual string MostrarUnElemento()
         {
-            /*Esta función muestra los detalles de los productos de forma reducida*/
+            /*Esta función muestra los detalles de los productos que tienen en común de forma reducida*/
             return $"({Id}) Nombre: {Nombre_producto}\n\tUnidades disponibles: {Unidades_producto}\n\tPrecio: {Precio_unidad_producto} euros";
         }
 
         public virtual string GuardarDatosFichero()
         {
+            /*Este producto muestra todos los detalles que tienen los productos de forma común*/
             return $"{Id};{Nombre_producto};{TipoProducto};{Unidades_producto};" +
                         $"{Precio_unidad_producto};" +
                         $"{descripción_del_producto};";
