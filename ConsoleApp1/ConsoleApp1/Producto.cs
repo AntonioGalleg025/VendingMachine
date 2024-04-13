@@ -8,7 +8,8 @@ namespace ConsoleApp1
 {
     abstract class Producto
     {
-        public Producto() { }
+        public Producto() { } //Constructor vacio
+        /*Atributos que tiene la clase producto*/
         public int Id { get; set; }
         public string TipoProducto { get; set; }
         public string Nombre_producto { get; set; }
@@ -18,6 +19,7 @@ namespace ConsoleApp1
 
         public string descripción_del_producto { get; set; }
 
+        //Constructor
         public Producto(int id, string nombre, string tipoproducto, int unidades,
             double precio, string descripcion)
         {
@@ -29,7 +31,7 @@ namespace ConsoleApp1
             Id = id;
         }
 
-        /*Función para añadir un nuevo producto*/
+        /*Método para añadir un nuevo producto*/
         public virtual void NuevoProducto(List<Producto> ListaProductos, int Comprobacion)
         {
             Console.WriteLine("---------------------Vamos a agregar un producto--------------------");
@@ -56,20 +58,20 @@ namespace ConsoleApp1
 
         public virtual string MostrarDetalles()
         {
-            /*Está función muestra los detalles de cada producto que luego las hijas podrán sobrescribrir*/
+            /*Este método muestra los detalles de cada producto que luego las hijas podrán sobrescribrir*/
             return $"({Nombre_producto}) Nombre: {Nombre_producto} \n\tUnidades disponibles: {Unidades_producto} \n\tPrecio: {Precio_unidad_producto} euros " +
                 $"\n\tDescripción: {descripción_del_producto}";
         }
 
         public virtual string MostrarUnElemento()
         {
-            /*Esta función muestra los detalles de los productos que tienen en común de forma reducida*/
+            /*Este método muestra los detalles de los productos que tienen en común de forma reducida*/
             return $"({Id}) Nombre: {Nombre_producto}\n\tUnidades disponibles: {Unidades_producto}\n\tPrecio: {Precio_unidad_producto} euros";
         }
 
         public virtual string GuardarDatosFichero()
         {
-            /*Este producto muestra todos los detalles que tienen los productos de forma común*/
+            /*Este método guarda todos los detalles que tienen los productos de forma común en el fichero*/
             return $"{Id};{Nombre_producto};{TipoProducto};{Unidades_producto};" +
                         $"{Precio_unidad_producto};" +
                         $"{descripción_del_producto};";
