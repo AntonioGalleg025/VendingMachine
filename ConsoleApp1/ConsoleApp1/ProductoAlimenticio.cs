@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class ProductoAlimenticio : Producto /*Herencia con la clase productos*/
+    internal class ProductoAlimenticio : Producto /*Herencia con la clase producto*/
     {
-        public string InfoNutricional { get; set; } /*Atríbutos adicionales de los productos alimenticios*/
+        public string InfoNutricional { get; set; } /*Atríbuto adicional de los productos alimenticios*/
         public ProductoAlimenticio() { }/*Constructor vacío*/
 
         /*Constructor*/
