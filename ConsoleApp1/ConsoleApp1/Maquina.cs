@@ -206,64 +206,61 @@ namespace ConsoleApp1
             }
         }
 
-        public void ListarTodos()
+        public void ListarTodos()/*Método para lisatar todo los productos*/
         {
 
             Console.WriteLine();
-            foreach (Producto p in ListaProductos)
+            foreach (Producto p in ListaProductos)/*Recorremos la ListaProductos*/
             {
-                if (p is ProductoPrecioso)
+                if (p is ProductoPrecioso)/*Si hay productos preciosos*/
                 {
                     Console.WriteLine("---------------------Productos preciosos--------------------");
-                    Console.WriteLine(p.MostrarUnElemento());
+                    Console.WriteLine(p.MostrarUnElemento());/*Mostramos los detalles de forma reducida*/
 
                 }
-                else if (p is ProductoElectronico)
+                else if (p is ProductoElectronico)/*Si hay productos electrónicos*/
                 {
                     Console.WriteLine("---------------------Productos electrónicos--------------------");
-                    Console.WriteLine(p.MostrarUnElemento());
+                    Console.WriteLine(p.MostrarUnElemento());/*Mostramos los detalles de forma reducida*/
 
                 }
-                else if (p is ProductoAlimenticio)
+                else if (p is ProductoAlimenticio)/*Si hay productos alimenticios*/
                 {
                     Console.WriteLine("---------------------Productos alimenticios--------------------");
-                    Console.WriteLine(p.MostrarUnElemento());
+                    Console.WriteLine(p.MostrarUnElemento());/*Mostramos los detalles de forma reducida*/
                 }
             }
         }
 
-        public void BuscarProducto()
+        public void BuscarProducto()/*Método para buscar los productos y mostrarlos de forma detallada*/
         {
             ListarTodos();
-            /*Pedimos el id del producto que queremos ver detalladamente*/
+            /*Pedimos el id del producto*/
             Console.WriteLine("\nIntroduce el ID del producto que desea ver: ");
             int id_producto = int.Parse(Console.ReadLine());
-            foreach (Producto p in ListaProductos)
+            foreach (Producto p in ListaProductos)/*Recorremos la lista de productos*/
             {
-                if (id_producto == p.Id)
+                if (id_producto == p.Id)/*En caso de que coincida la id pedida con la que hay en la lista*/
                 {
-                    if (p is ProductoPrecioso)
+                    if (p is ProductoPrecioso)/*Si es un producto precioso*/
                     {
-                        Console.WriteLine(p.MostrarDetalles());
-
+                        Console.WriteLine(p.MostrarDetalles());/*Mostramos el producto de forma detallada*/
                         break;
 
                     }
-                    else if (p is ProductoElectronico)
+                    else if (p is ProductoElectronico)/*Si es un producto electrónico*/
                     {
-
-                        Console.WriteLine(p.MostrarDetalles());
+                        Console.WriteLine(p.MostrarDetalles());/*Mostramos el producto de forma detallada*/
                         break;
-
                     }
-                    else if (p is ProductoAlimenticio)
+                    else if (p is ProductoAlimenticio)/*Si es un producto alimenticio*/
                     {
-                        Console.WriteLine(p.MostrarDetalles());
+                        Console.WriteLine(p.MostrarDetalles());/*Mostramos el producto de forma detallada*/
                         break;
                     }
                 }
             }
-            Console.ReadLine();
+            Console.ReadKey();
         }
 
         private int ComprobarCantidadProductos()
