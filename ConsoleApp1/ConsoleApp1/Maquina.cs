@@ -263,23 +263,22 @@ namespace ConsoleApp1
             Console.ReadKey();
         }
 
-        private int ComprobarCantidadProductos()
+        private int ComprobarCantidadProductos()/*Método para comprobar la cantidad de productos que hay*/
         {
             int Contador = 0;
             int Sumatorio = 0;
             int[] CantidadUnidades = new int[100];
 
-            foreach (Producto p in ListaProductos)
+            foreach (Producto p in ListaProductos)/*Recorremos la lista de productos*/
             {
-                CantidadUnidades[Contador] = p.Unidades_producto;
-                Contador++;
+                CantidadUnidades[Contador] = p.Unidades_producto;/*Por cada producto que haya la añadimos al array*/
+                Contador++;/*Sumamos uno en el contador*/
             }
-            for (int i = 0; i < CantidadUnidades.Count(); i++)
+            for (int i = 0; i < CantidadUnidades.Count(); i++)/*Hacemos un for para recorrer todo el array*/
             {
-                Sumatorio += CantidadUnidades[i];
+                Sumatorio += CantidadUnidades[i]; /*Por cada producto que hay en el array se lo sumamos al número de productos quehabí anteriormente*/
             }
-
-            return Sumatorio;
+            return Sumatorio;/*Devolvemos el sumatorio*/
         }
 
         public void CargarContenidoArchivo()
