@@ -102,7 +102,7 @@ namespace ConsoleApp1
                             }
                         }
                     }
-                    /*Llamamos a la función pagar*/
+                    /*Llamamos al método pagar*/
                     Pagar();
                 }
                 /*En caso de que no desee pagar*/
@@ -120,19 +120,22 @@ namespace ConsoleApp1
 
         public void Pagar()
         {
+            /*Le preguntamos que método quiere usar para pagar*/
             Console.WriteLine("Cual es el metodo de pago deseado(1.Efectivo  2.Tarjeta):  ");
             int option = int.Parse(Console.ReadLine());
 
             switch (option)
             {
+                /*Paago en efectivo*/
                 case 1:
                     PagoEfectivo NuevoPagoConEfectivo = new PagoEfectivo();
-                    NuevoPagoConEfectivo.PagarConEfectivo(CarritoCompra);
+                    NuevoPagoConEfectivo.PagarConEfectivo(CarritoCompra);/*Llamamos al método y pasamos la lista por valor donde se encuentran los productos que quiera pagar*/
                     break;
 
+                /*Pago con tarjeta*/
                 case 2:
                     PagoTarjeta NuevoPagoConTarjeta = new PagoTarjeta();
-                    NuevoPagoConTarjeta.PagoConTarjeta(CarritoCompra);
+                    NuevoPagoConTarjeta.PagoConTarjeta(CarritoCompra);/*Llamamos al método y pasamos la lista por valor donde se encuentran los productos que quiera pagar*/
                     break;
 
             }
