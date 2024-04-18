@@ -21,26 +21,32 @@ namespace ConsoleApp1
             {
                 TotalDinero = TotalDinero + p.Precio_unidad_producto;/*Sumamos el total del precio de la lista de la compra*/
             }
-            Console.WriteLine("Introduce el numerode tu tarjeta: ");
+            /*Pedimos el númeor de la tarjeta*/
+            Console.WriteLine("Introduce el número de tu tarjeta: ");
             string num_Targeta = Console.ReadLine();
+            /*Pedimos el saldo que hay en la tarjeta*/
             Console.WriteLine("Introduce tu saldo:");
             double saldo = double.Parse(Console.ReadLine());
+            /*Pedimos la fecha de caducidad*/
             Console.WriteLine("Introduce la fecha de caducidad (DD/MM/AAAA)");
             string fech_Caducidad = Console.ReadLine();
-            Console.WriteLine("Introduce el codigo de seguridad (****)");
+            /*Pedimos el código de seguridad*/
+            Console.WriteLine("Introduce el código de seguridad (****)");
             int cod_Seguridad = int.Parse(Console.ReadLine());
 
+            /*Si el dinero de la lista que desea comprar es menor o igual que el saldo*/
             if (TotalDinero <= saldo)
             {
-                saldo = saldo - TotalDinero;
-                Console.WriteLine($"Tu saldo actual es: {saldo}");
+                saldo = saldo - TotalDinero;/*Al saldo que le restamos el precio por comprar los productos*/
+                Console.WriteLine($"Tu saldo actual es: {saldo}");/*Le mostramos el saldo que hay en la tarjeta tras la compra*/
                 Console.WriteLine("Se han comprado los productos con exito");
-                Console.ReadLine();
+                Console.ReadKey();
             }
+            /*En caso de que la lista que desea comprar sea mayo que el sald9*/
             else
             {
-                Console.WriteLine("Su saldo es insuficiente, no se puede comprar el articulo");
-                Console.ReadLine();
+                Console.WriteLine("Su saldo es insuficiente, no se puede comprar el articulo");/*Le decimos que el saldo no es suficiente para pagar la lista de productos*/
+                Console.ReadKey();
             }
         }
     }
