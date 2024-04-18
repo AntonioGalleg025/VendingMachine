@@ -60,7 +60,7 @@ namespace ConsoleApp1
                                     
                                     }
                                 }
-                                else   // Se advierte por pantalla de ue no hay unidades 
+                                else   // Se advierte por pantalla de que no hay unidades 
                                 {
                                     Console.WriteLine("No existen unidades de ese producto o ha indicado mal el producto");
                                     break;
@@ -70,49 +70,54 @@ namespace ConsoleApp1
                             }
                         }
                     }
-
+                /*Le preguntamos si quiere agregar otro producto*/
                 Console.WriteLine("Quieres agregar otro producto?(1 = no || 2 = si): ");
                 Salir = int.Parse(Console.ReadLine());
 
-            } while (Salir != 1);
+            } while (Salir != 1); /*Si no quiere agregar otro producto a la cesta salimos del bucle*/
 
-            if (CarritoCompra.Count > 0)
+            if (CarritoCompra.Count > 0)/*Si hemos añadido algún producto*/
             {
-                Console.WriteLine($"Tienes {CarritoCompra.Count} en tu cesta, quiere proceder con el pago?(1 = si || 2 = no): ");
+                Console.WriteLine($"Tienes {CarritoCompra.Count} en tu cesta, quiere proceder con el pago?(1 = si || 2 = no): ");/*Le preguntamos si quiere pagar*/
                 int opcion = int.Parse(Console.ReadLine());
-                if (opcion == 1)
+                if (opcion == 1)/*En caso de que quiera pagar*/
                 {
+                    /*Comprobamos los productos que están en la ListaProductos y CarritoCompra*/
                     foreach (Producto c in CarritoCompra)
                     {
                         foreach (Producto l in ListaProductos)
                         {
-                            if (c.Id == l.Id)
+                            if (c.Id == l.Id) /*En caso de que los id del producto coincida en las dos listas*/
                             {
-                                if (l.Unidades_producto > 1)
+                                if (l.Unidades_producto > 1) /*Si deseamos comprar más de un producto*/
                                 {
-                                    l.Unidades_producto = l.Unidades_producto - 1;
+                                    l.Unidades_producto = l.Unidades_producto - 1; /*Eliminamos 1 Unidades_producto*/
                                     break;
                                 }
-                                else if (l.Unidades_producto == 1)
+                                else if (l.Unidades_producto == 1)/*En caso de que solo sea 1*/
                                 {
-                                    ListaProductos.Remove(l);
+                                    ListaProductos.Remove(l); /*Lo eliminamos de la ListaProductos*/
                                     break;
                                 }
                             }
                         }
                     }
+                    /*Llamamos a la función pagar*/
                     Pagar();
                 }
+                /*En caso de que no desee pagar*/
                 else if (opcion == 2)
                 {
-                    CarritoCompra.Clear();
+                    CarritoCompra.Clear();/*Limpiamos la lista CarritoCompra*/
                 }
+                /*Si no pulsa el 1 o el 2*/
                 else
                 {
-                    Console.WriteLine("Opcion incorrecta");
+                    Console.WriteLine("Opcion incorrecta");/*Le indicamos que no es la opción correcta*/
                 }
             }
         }
+
         public void Pagar()
         {
             Console.WriteLine("Cual es el metodo de pago deseado(1.Efectivo  2.Tarjeta):  ");
