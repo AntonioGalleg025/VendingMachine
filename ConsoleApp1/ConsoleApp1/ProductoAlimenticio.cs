@@ -25,6 +25,11 @@ namespace ConsoleApp1
             descripción_del_producto = descripcion;
         }
 
+        public ProductoAlimenticio()
+        {
+            throw new System.NotImplementedException();
+        }
+
         /*Método para establecer los atributos de un nuevo producto alimenticio*/
         public override void NuevoProducto(List<Producto> L, int Comprobacion)
         {

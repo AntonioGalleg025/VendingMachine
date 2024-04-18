@@ -10,6 +10,11 @@ namespace ConsoleApp1
 {
     internal class PagoEfectivo
     {
+        public PagoEfectivo()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public double TotalDinero { get; set; }
         public static double[] Monedas = new double[]
         {

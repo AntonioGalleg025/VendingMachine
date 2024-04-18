@@ -30,6 +30,12 @@ namespace ConsoleApp1
         }
         /*Constructor vacío*/
         public ProductoElectronico() { }
+
+        public ProductoElectronico()
+        {
+            throw new System.NotImplementedException();
+        }
+
         /*Método para establecer los atributos de un nuevo producto electrónico*/
         public override void NuevoProducto(List<Producto> L, int Comprobacion)
         {

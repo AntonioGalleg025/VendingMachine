@@ -30,6 +30,11 @@ namespace ConsoleApp1
             descripción_del_producto = descripcion;
         }
 
+        public ProductoPrecioso()
+        {
+            throw new System.NotImplementedException();
+        }
+
         /*Método para establecer los atributos de un nuevo producto precioso*/
         public override void NuevoProducto(List<Producto> L, int Comprobacion)
         {

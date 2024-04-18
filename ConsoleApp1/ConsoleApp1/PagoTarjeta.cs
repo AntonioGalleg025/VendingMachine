@@ -8,6 +8,11 @@ namespace ConsoleApp1
 {
     internal class PagoTarjeta
     {
+        public PagoTarjeta()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public double TotalDinero { get; set; }
 
         public void PagoConTarjeta(List<Producto> CarritoCompra)

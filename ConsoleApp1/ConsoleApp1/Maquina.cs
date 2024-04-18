@@ -18,11 +18,15 @@ namespace ConsoleApp1
         
         public Maquina() { }  //Constructor vacio 
 
-        
+        public Maquina()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void ComprarProducto()  //Metodo para comprar los productos 
         {
-            /
-            foreach (Producto producto in ListaProductos)  / Hacemos un bucle en el que recorremos ListaProductos
+       
+            foreach (Producto producto in ListaProductos)  // Hacemos un bucle en el que recorremos ListaProductos
             {
                 
                 ListaTemp.Add(producto);  //Añadimos todo lo que conenga ListaProductos a ListaTemp

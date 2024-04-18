@@ -19,6 +19,7 @@ namespace ConsoleApp1
     {
         static int Opcion;
         static string CodigoSecreto;
+
         static void Main(string[] args)
         {
             Maquina maquina = new Maquina();
