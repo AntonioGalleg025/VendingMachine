@@ -281,39 +281,43 @@ namespace ConsoleApp1
             return Sumatorio;/*Devolvemos el sumatorio*/
         }
 
-        public void CargarContenidoArchivo()
+        public void CargarContenidoArchivo() /*Método para cargar los contenidos del archivo*/
         {
-
             FileStream fs = new FileStream($"Productos.txt", FileMode.OpenOrCreate, FileAccess.Read);
             StreamReader sr = new StreamReader(fs);
             while (sr.Peek() != -1)
             {
                 string linea = sr.ReadLine();
-                string[] datos = linea.Split(';');
+                string[] datos = linea.Split(';');/*Separador entre cada elemento del archivo*/
 
+                /*Si hay productos preciosos*/
                 if (datos[2] == "Producto Precioso")
                 {
+                    /*Identificamos cada elemento del archivo de los productos preciosos*/
                     ProductoPrecioso productoPrecioso = new ProductoPrecioso(int.Parse(datos[0]), datos[1], datos[2],
                         int.Parse(datos[3]), double.Parse(datos[4]), datos[5],
                         datos[6], double.Parse(datos[7]));
-                    ListaProductos.Add(productoPrecioso);
+                    ListaProductos.Add(productoPrecioso);/*Y lo añadimos a la lista de productos*/
                 }
+                /*Si hay productos alimenticios*/
                 else if (datos[2] == "Producto Alimenticio")
                 {
+                    /*Identificamos cada elemento del archivo de los productos alimenticios*/
                     ProductoAlimenticio productoAlimenticio = new ProductoAlimenticio(int.Parse(datos[0]),
                         datos[1], datos[2], int.Parse(datos[3]),
                         double.Parse(datos[4]), datos[5], datos[6]);
-                    ListaProductos.Add(productoAlimenticio);
+                    ListaProductos.Add(productoAlimenticio);/*Y lo añadimos a la lista de productos*/
                 }
+                /*Si hay productos electrónicos*/
                 else if (datos[2] == "Producto Electronico")
                 {
-
+                    /*Identificamos cada elemento del archivo de los productos electrónicos*/
                     ProductoElectronico productoElectronico = new ProductoElectronico(int.Parse(datos[0]), datos[1], datos[2],
                         int.Parse(datos[3]), double.Parse(datos[4]), datos[5], bool.Parse(datos[6]), bool.Parse(datos[7]), datos[8]);
-                    ListaProductos.Add(productoElectronico);
+                    ListaProductos.Add(productoElectronico);/*Y los añadimos a la lista de productos*/
                 }
             }
-            sr.Close();
+            sr.Close();/*Cerramos el archivo*/
             //File.Delete("Productos.txt");
         }
 
