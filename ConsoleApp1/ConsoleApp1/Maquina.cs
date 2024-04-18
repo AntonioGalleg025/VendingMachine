@@ -118,7 +118,7 @@ namespace ConsoleApp1
             }
         }
 
-        public void Pagar()
+        public void Pagar()/*Método para pagar*/
         {
             /*Le preguntamos que método quiere usar para pagar*/
             Console.WriteLine("Cual es el metodo de pago deseado(1.Efectivo  2.Tarjeta):  ");
@@ -142,9 +142,10 @@ namespace ConsoleApp1
         }
 
 
-        public void AniadirProducto()
+        public void AniadirProducto()/*Método para añadir productos*/
         {
             int Comprobacion = ComprobarCantidadProductos();
+            /*Indicamos los tipos de producto que hay*/
             Console.WriteLine("1-Nuevo producto precioso");
             Console.WriteLine("2-Nuevo producto alimenticio");
             Console.WriteLine("3-Nuevo producto electronico");
@@ -153,54 +154,52 @@ namespace ConsoleApp1
 
             switch (opcion)
             {
+                /*Productos preciosos*/
                 case 1:
-                    if (Comprobacion >= 12)
+                    if (Comprobacion >= 12)/*Cuando haya más de 12 productos*/
                     {
-
-                        Console.WriteLine("Lo siento, la maquina esta llena");
+                        Console.WriteLine("Lo siento, la maquina esta llena");/*Le indicamos que la máquina está llena*/
                         Console.ReadKey();
                     }
                     else
                     {
-
                         ProductoPrecioso productoPrecioso = new ProductoPrecioso();
-                        productoPrecioso.NuevoProducto(ListaProductos, Comprobacion);
-                        ListaProductos.Add(productoPrecioso);
+                        productoPrecioso.NuevoProducto(ListaProductos, Comprobacion);/*Llamamos al método que pide los detalles de productos preciosos*/
+                        ListaProductos.Add(productoPrecioso);/*Lo añadimos a la lista*/
                     }
                     break;
-
+                
+                /*Productos alimenticios*/
                 case 2:
-                    if (Comprobacion >= 12)
+                    if (Comprobacion >= 12)/*Cuando haya más de doce productos*/
                     {
-                        Console.WriteLine("Lo siento, la maquina esta llena");
+                        Console.WriteLine("Lo siento, la maquina esta llena");/*Le indicamos que la máquina está llena*/
                         Console.ReadKey();
                     }
                     else
                     {
-
                         ProductoAlimenticio productoAlimenticio = new ProductoAlimenticio();
-                        productoAlimenticio.NuevoProducto(ListaProductos, Comprobacion);
-                        ListaProductos.Add(productoAlimenticio);
+                        productoAlimenticio.NuevoProducto(ListaProductos, Comprobacion);/*Llamamos al método que pide los detalles de productos alimenticios*/
+                        ListaProductos.Add(productoAlimenticio);/*Lo añadimos a la lista*/
                     }
                     break;
 
+                /*Productos electrónicos*/
                 case 3:
-
-                    if (Comprobacion >= 12)
+                    if (Comprobacion >= 12)/*Cuando haya más de 12 productos*/
                     {
-                        Console.WriteLine("Lo siento, la maquina esta llena");
+                        Console.WriteLine("Lo siento, la maquina esta llena");/*Le indicamos que la máquina está llena*/
                         Console.ReadKey();
                     }
                     else
                     {
-
                         ProductoElectronico productoElectronico = new ProductoElectronico();
-                        productoElectronico.NuevoProducto(ListaProductos, Comprobacion);
-                        ListaProductos.Add(productoElectronico);
+                        productoElectronico.NuevoProducto(ListaProductos, Comprobacion);/*Llamamos al método que pide los detalles de productos electrónicos*/
+                        ListaProductos.Add(productoElectronico);/*Lo añadimos a la lista*/
                     }
                     break;
 
-
+                /*En caso de que pulse una opción incorrecta*/
                 default:
                     Console.WriteLine("Opcion incorrecta, pulse una tecla para continuar");
                     break;
