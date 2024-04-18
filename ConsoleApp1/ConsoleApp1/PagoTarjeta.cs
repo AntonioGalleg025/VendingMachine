@@ -17,9 +17,9 @@ namespace ConsoleApp1
 
         public void PagoConTarjeta(List<Producto> CarritoCompra)
         {
-            foreach (Producto p in CarritoCompra)
+            foreach (Producto p in CarritoCompra)/*Recorremos la lista de productos que deseamos comprar*/
             {
-                TotalDinero = TotalDinero + p.Precio_unidad_producto;
+                TotalDinero = TotalDinero + p.Precio_unidad_producto;/*Sumamos el total del precio de la lista de la compra*/
             }
             Console.WriteLine("Introduce el numerode tu tarjeta: ");
             string num_Targeta = Console.ReadLine();
