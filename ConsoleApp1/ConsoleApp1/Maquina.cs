@@ -283,7 +283,7 @@ namespace ConsoleApp1
 
         public void CargarContenidoArchivo() /*Método para cargar los contenidos del archivo*/
         {
-            FileStream fs = new FileStream($"Productos.txt", FileMode.OpenOrCreate, FileAccess.Read);
+            FileStream fs = new FileStream($"Productos.txt", FileMode.OpenOrCreate, FileAccess.Read); /*Abrimos o creamos el archivo Productos.txt y lo ponemos para podamos leer su contenido*/
             StreamReader sr = new StreamReader(fs);
             while (sr.Peek() != -1)
             {
@@ -321,30 +321,26 @@ namespace ConsoleApp1
             //File.Delete("Productos.txt");
         }
 
-        public void GuardarContenidoArchivo()
+        public void GuardarContenidoArchivo() /*Método para guardar el contenido en el archivo*/
         {
-            FileStream fs = new FileStream($"Productos.txt", FileMode.OpenOrCreate, FileAccess.Write);
+            FileStream fs = new FileStream($"Productos.txt", FileMode.OpenOrCreate, FileAccess.Write);/*Abrimos o creamos el archivo Productos.txt y lo ponemos para que podamos escribir en el*/
             StreamWriter sw = new StreamWriter(fs);
-            foreach (Producto p in ListaProductos)
+            foreach (Producto p in ListaProductos)/*Recorremos la lista de productos*/
             {
+                /*Si es un producto precioso*/
                 if (p is ProductoPrecioso)
                 {
-                    sw.WriteLine(p.GuardarDatosFichero());
-
-
+                    sw.WriteLine(p.GuardarDatosFichero());/*Llamamos a la función que guarda los datos en el fichero*/
                 }
+                /*Si es un producto electrónico*/
                 else if (p is ProductoElectronico)
                 {
-
-                    sw.WriteLine(p.GuardarDatosFichero());
-
-
+                    sw.WriteLine(p.GuardarDatosFichero());/*Llamamos a la función que guarda los datos en el fichero*/
                 }
+                /*Si es un producto alimenticio*/
                 else if (p is ProductoAlimenticio)
                 {
-
-                    sw.WriteLine(p.GuardarDatosFichero());
-
+                    sw.WriteLine(p.GuardarDatosFichero());/*Llamamos a la función que guarda los datos en el fichero*/
                 }
             }
             sw.Close();
