@@ -26,9 +26,10 @@ namespace ConsoleApp1
             {
                 /*Menú con opciones*/
                 Console.Clear();
+
                 Console.WriteLine("1-Comprar un producto");
                 Console.WriteLine("2-Mostrar informacion de un producto");
-                Console.WriteLine("3-Carga individual de un producto");
+                Console.WriteLine("3-Acceder al menu de administracion de productos");
                 Console.WriteLine("4-Carga completa de productos");
                 Console.WriteLine("5-Salir del programa");
                 Console.WriteLine("\n\nSeleccione una opcion");
@@ -56,9 +57,9 @@ namespace ConsoleApp1
                         CodigoSecreto = Console.ReadLine();
                         if (CodigoSecreto == "0000")
                         {
-
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Contraseña correcta!");
-                            maquina.AniadirProducto();
+                            maquina.MenuProductosAdmin();
                         }
                         else
                         {
@@ -77,9 +78,9 @@ namespace ConsoleApp1
                         CodigoSecreto = Console.ReadLine();
                         if (CodigoSecreto == "0000")
                         {
-
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine("Contraseña correcta!");
-                            if (File.Exists("Productos.txt"))
+                            if (File.Exists("Productos.csv"))
                             {
                                 maquina.CargarContenidoArchivo();
                             }
@@ -111,5 +112,7 @@ namespace ConsoleApp1
                 Console.WriteLine("Gracias por usar la maquina, esperamos verle pronto :)");
             }
         }
+
+        
     }
 }

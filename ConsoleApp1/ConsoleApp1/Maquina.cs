@@ -135,6 +135,36 @@ namespace ConsoleApp1
         }
 
 
+        public void MenuProductosAdmin()
+        {
+            int opcion;
+            Console.Clear();
+            Console.WriteLine("1-Añadir un nuevo producto a la maquina");
+            Console.WriteLine("2-Eliminar un tipo de producto que esta dentro de la maquina");
+            Console.WriteLine("3-Eliminar una unidad de un producto que esta en la maquina");
+            Console.WriteLine("Selecciona la opcion que quiere realizar: ");
+            opcion = int.Parse(Console.ReadLine());
+            switch(opcion)
+            {
+                case 1:
+                    AniadirProducto();
+                    break;
+
+                case 2:
+                    EliminarProducto();
+                    break;
+
+                case 3:
+                    EliminarUnaUnidad();
+                    break;
+
+                default:
+                    Console.WriteLine("Opcion no valida");
+                    Console.ReadKey();
+                    break;
+            }
+        }
+
         public void AniadirProducto()
         {
             int Comprobacion = ComprobarCantidadProductos();
@@ -197,6 +227,44 @@ namespace ConsoleApp1
             }
         }
 
+        public void EliminarProducto()
+        {
+            ListarTodos();
+            Console.WriteLine("Introduce el Id del producto que quieres eliminar: ");
+            int IdElimino = int.Parse(Console.ReadLine());
+            foreach(Producto p in ListaProductos)
+            {
+                if(IdElimino == p.Id)
+                {
+                    ListaProductos.Remove(p);
+                    Console.WriteLine("Producto eliminado con exito");
+                    break;
+                }
+            }
+            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.ReadKey();
+        }
+
+        public void EliminarUnaUnidad()
+        {
+            ListarTodos();
+            Console.WriteLine("Introduce el Id del producto del cual quieres eliminar una unidad: ");
+            int IdElimino = int.Parse(Console.ReadLine());
+            foreach (Producto p in ListaProductos)
+            {
+                if (IdElimino == p.Id)
+                {
+                    if(p.Unidades_producto > 1)
+                    {
+                        p.Unidades_producto -= 1;
+
+                    }else if(p.Unidades_producto == 1)
+                    {
+                        ListaProductos.Remove(p);
+                    }
+                }
+            }
+        }
         public void ListarTodos()
         {
 
@@ -274,7 +342,7 @@ namespace ConsoleApp1
 
         public void CargarContenidoArchivo()
         {
-            FileStream fs = new FileStream($"Productos.txt", FileMode.OpenOrCreate, FileAccess.Read); 
+            FileStream fs = new FileStream($"Productos.csv", FileMode.OpenOrCreate, FileAccess.Read); 
             StreamReader sr = new StreamReader(fs);
             while (sr.Peek() != -1)
             {
@@ -313,7 +381,7 @@ namespace ConsoleApp1
 
         public void GuardarContenidoArchivo()
         {
-            FileStream fs = new FileStream($"Productos.txt", FileMode.OpenOrCreate, FileAccess.Write);
+            FileStream fs = new FileStream($"Productos.csv", FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter sw = new StreamWriter(fs);
             foreach (Producto p in ListaProductos)
             {
