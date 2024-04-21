@@ -18,11 +18,6 @@ namespace ConsoleApp1
         
         public Maquina() { }  //Constructor vacio 
 
-        public Maquina()
-        {
-            throw new System.NotImplementedException();
-        }
-
         public void ComprarProducto()  //Metodo para comprar los productos 
         {
        

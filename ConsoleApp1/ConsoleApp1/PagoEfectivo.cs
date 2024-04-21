@@ -12,7 +12,7 @@ namespace ConsoleApp1
     {
         public PagoEfectivo()
         {
-            throw new System.NotImplementedException();
+            
         }
 
         public double TotalDinero { get; set; }
