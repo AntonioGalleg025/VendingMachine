@@ -342,40 +342,49 @@ namespace ConsoleApp1
 
         public void CargarContenidoArchivo()
         {
-            FileStream fs = new FileStream($"Productos.csv", FileMode.OpenOrCreate, FileAccess.Read); 
-            StreamReader sr = new StreamReader(fs);
-            while (sr.Peek() != -1)
+            try
             {
-                string linea = sr.ReadLine();
-                string[] datos = linea.Split(';');
-
-                if (datos[2] == "Producto Precioso")
+                FileStream fs = new FileStream($"Productos.csv", FileMode.OpenOrCreate, FileAccess.Read);
+                StreamReader sr = new StreamReader(fs);
+                while (sr.Peek() != -1)
                 {
+                    string linea = sr.ReadLine();
+                    string[] datos = linea.Split(';');
 
-                    ProductoPrecioso productoPrecioso = new ProductoPrecioso(int.Parse(datos[0]), datos[1], datos[2],
-                        int.Parse(datos[3]), double.Parse(datos[4]), datos[5],
-                        datos[6], double.Parse(datos[7]));
-                    ListaProductos.Add(productoPrecioso);
+                    if (datos[2] == "Producto Precioso")
+                    {
+
+                        ProductoPrecioso productoPrecioso = new ProductoPrecioso(int.Parse(datos[0]), datos[1], datos[2],
+                            int.Parse(datos[3]), double.Parse(datos[4]), datos[5],
+                            datos[6], double.Parse(datos[7]));
+                        ListaProductos.Add(productoPrecioso);
+                    }
+
+                    else if (datos[2] == "Producto Alimenticio")
+                    {
+
+                        ProductoAlimenticio productoAlimenticio = new ProductoAlimenticio(int.Parse(datos[0]),
+                            datos[1], datos[2], int.Parse(datos[3]),
+                            double.Parse(datos[4]), datos[5], datos[6]);
+                        ListaProductos.Add(productoAlimenticio);
+                    }
+
+                    else if (datos[2] == "Producto Electronico")
+                    {
+
+                        ProductoElectronico productoElectronico = new ProductoElectronico(int.Parse(datos[0]), datos[1], datos[2],
+                            int.Parse(datos[3]), double.Parse(datos[4]), datos[5], bool.Parse(datos[6]), bool.Parse(datos[7]), datos[8]);
+                        ListaProductos.Add(productoElectronico);
+                    }
                 }
-
-                else if (datos[2] == "Producto Alimenticio")
-                {
-
-                    ProductoAlimenticio productoAlimenticio = new ProductoAlimenticio(int.Parse(datos[0]),
-                        datos[1], datos[2], int.Parse(datos[3]),
-                        double.Parse(datos[4]), datos[5], datos[6]);
-                    ListaProductos.Add(productoAlimenticio);
-                }
-
-                else if (datos[2] == "Producto Electronico")
-                {
-
-                    ProductoElectronico productoElectronico = new ProductoElectronico(int.Parse(datos[0]), datos[1], datos[2],
-                        int.Parse(datos[3]), double.Parse(datos[4]), datos[5], bool.Parse(datos[6]), bool.Parse(datos[7]), datos[8]);
-                    ListaProductos.Add(productoElectronico);
-                }
+                sr.Close();
+            }catch(FileNotFoundException ex) { 
+            
+                Console.WriteLine("No se encuentra el fichero: "+ ex.Message);
+            }catch(IOException ex)
+            {
+                Console.WriteLine("ERROR !!!: " + ex.Message);
             }
-            sr.Close();
 
         }
 

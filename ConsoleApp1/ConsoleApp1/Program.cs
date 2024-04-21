@@ -16,7 +16,7 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             Maquina maquina = new Maquina();
-            
+            Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Sea bienvenido a su Maquina de Vending");
             System.Threading.Thread.Sleep(1000);
             Console.Clear();
@@ -33,75 +33,77 @@ namespace ConsoleApp1
                 Console.WriteLine("4-Carga completa de productos");
                 Console.WriteLine("5-Salir del programa");
                 Console.WriteLine("\n\nSeleccione una opcion");
-                Opcion = int.Parse(Console.ReadLine());
-                switch (Opcion)
+                try
                 {
+                    Opcion = int.Parse(Console.ReadLine());
+                    switch (Opcion)
+                    {
 
-                    case 1:
+                        case 1:
 
-                        Console.Clear();
-                        maquina.ComprarProducto();
-                        break;
+                            Console.Clear();
+                            maquina.ComprarProducto();
+                            break;
 
-                    case 2:
+                        case 2:
 
-                        Console.Clear();
-                        maquina.BuscarProducto();
-                        break;
+                            Console.Clear();
+                            maquina.BuscarProducto();
+                            break;
 
-                    case 3:
-                        Console.Clear();
-                        Console.WriteLine("La opcion introducida es solo para administradores");
+                        case 3:
+                            Console.Clear();
+                            Console.WriteLine("La opcion introducida es solo para administradores");
 
-                        Console.WriteLine("Introduce el codigo secreto para continuar");
-                        CodigoSecreto = Console.ReadLine();
-                        if (CodigoSecreto == "0000")
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("Contraseña correcta!");
-                            maquina.MenuProductosAdmin();
-                        }
-                        else
-                        {
-
-                            Console.WriteLine("No ha introducido el codigo correcto");
-                            Console.WriteLine("Saliendo al menu principal...");
-                            System.Threading.Thread.Sleep(1000);
-                        }
-                        break;
-
-                    case 4:
-                        Console.Clear();
-                        Console.WriteLine("La opcion introducida es solo para administradores");
-
-                        Console.WriteLine("Introduce el codigo secreto para continuar");
-                        CodigoSecreto = Console.ReadLine();
-                        if (CodigoSecreto == "0000")
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("Contraseña correcta!");
-                            if (File.Exists("Productos.csv"))
+                            Console.WriteLine("Introduce el codigo secreto para continuar");
+                            CodigoSecreto = Console.ReadLine();
+                            if (CodigoSecreto == "0000")
                             {
-                                maquina.CargarContenidoArchivo();
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Contraseña correcta!");
+                                maquina.MenuProductosAdmin();
                             }
-                        }
-                        else
-                        {
+                            else
+                            {
 
-                            Console.WriteLine("No ha introducido el codigo correcto");
-                            Console.WriteLine("Saliendo al menu principal...");
-                            System.Threading.Thread.Sleep(1000);
-                        }
-                        break;
+                                Console.WriteLine("No ha introducido el codigo correcto");
+                                Console.WriteLine("Saliendo al menu principal...");
+                                System.Threading.Thread.Sleep(1000);
+                            }
+                            break;
 
-                    case 5:
-                        break;
+                        case 4:
+                            Console.Clear();
+                            Console.WriteLine("La opcion introducida es solo para administradores");
 
-                    default:
+                            Console.WriteLine("Introduce el codigo secreto para continuar");
+                            CodigoSecreto = Console.ReadLine();
+                            if (CodigoSecreto == "0000")
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("Contraseña correcta!");
+                                if (File.Exists("Productos.csv"))
+                                {
+                                    maquina.CargarContenidoArchivo();
+                                }
+                            }
+                            else
+                            {
 
-                        Console.WriteLine("Opcion incorrecta");
-                        break;
-                    
+                                Console.WriteLine("No ha introducido el codigo correcto");
+                                Console.WriteLine("Saliendo al menu principal...");
+                                System.Threading.Thread.Sleep(1000);
+                            }
+                            break;
+                    }
+
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Introduce una opcion valida");
+                }catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
                 }
 
             } while (Opcion != 5);
