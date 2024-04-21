@@ -6,19 +6,17 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    internal class ProductoPrecioso : Producto /*Herencia con la clase producto*/
+    internal class ProductoPrecioso : Producto
     {
-        /*Atríbutos adicionales de los productos preciosos*/
+
         public string TipoMaterial { get; set; }
         public double Peso { get; set; }
 
-        /*Constructor vacío*/
         public ProductoPrecioso() { }
 
-        /*Constructor*/
         public ProductoPrecioso(int id, string nombre, string tipoproducto, int unidades,
             double precio, string descripcion, string tipoMaterial, double peso)
-            : base(id, nombre, tipoproducto, unidades, precio, descripcion) /*Más la herencia de la clase Producto*/
+            : base(id, nombre, tipoproducto, unidades, precio, descripcion) 
         {
             TipoProducto = tipoproducto;
             TipoMaterial = tipoMaterial;
@@ -30,12 +28,10 @@ namespace ConsoleApp1
             descripción_del_producto = descripcion;
         }
 
-
-        /*Método para establecer los atributos de un nuevo producto precioso*/
         public override void NuevoProducto(List<Producto> L, int Comprobacion)
         {
-            base.NuevoProducto(L, Comprobacion);/*LLamamos a la clase padre*/
-            /*Añadimos los atributos que son solo de productos preciosos*/
+            base.NuevoProducto(L, Comprobacion);
+
             TipoProducto = "Producto Precioso";
             Console.WriteLine("\nIntroduce el tipo de material del producto precioso: ");
             TipoMaterial = Console.ReadLine();
@@ -45,22 +41,19 @@ namespace ConsoleApp1
             Console.ReadKey();
         }
 
-        /*Método para mostrar los detalles de los productos preciosos*/
         public override string MostrarDetalles()
         {
-            return $"{base.MostrarDetalles()}\n\tTipo de material: {TipoMaterial}\n\tPeso: {Peso} gramos"; /*Llamamos a la clase padre y añadimos los atributos de productos preciosos*/
+            return $"{base.MostrarDetalles()}\n\tTipo de material: {TipoMaterial}\n\tPeso: {Peso} gramos"; 
         }
 
-        /*Método para mostrar los elementos de forma reducida*/
         public override string MostrarUnElemento()
         {
-            return base.MostrarUnElemento(); /*LLamando a la clase padre*/
+            return base.MostrarUnElemento();
         }
 
-        /*Método para guardar los elementos en un fichero*/
         public override string GuardarDatosFichero()
         {
-            return base.GuardarDatosFichero() + $"{TipoMaterial};{Peso}"; /*Llamamos a la clase padre y añadimos los atributos de productos preciosos*/
+            return base.GuardarDatosFichero() + $"{TipoMaterial};{Peso}";
         }
     }
 }

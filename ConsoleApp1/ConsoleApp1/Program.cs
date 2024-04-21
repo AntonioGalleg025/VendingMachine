@@ -7,14 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    /*Ejercicio Realizado por: Antonio Gallego Ortiz, Carlos Ynclan Nieto, Adrian Zamorano Valero
-     
-     
-     Notas:
-       *
-     
-     
-     */
+    /*Ejercicio Realizado por: Antonio Gallego Ortiz, Carlos Ynclan Nieto, Adrian Zamorano Valero*/
     internal class Program
     {
         static int Opcion;
@@ -44,13 +37,13 @@ namespace ConsoleApp1
                 {
 
                     case 1:
-                        /*Llamamos a la función en la clase máquina para comprar producto*/
+
                         Console.Clear();
                         maquina.ComprarProducto();
                         break;
 
                     case 2:
-                        /*Llamamos a las funciones para hacer las listas reducidas*/
+
                         Console.Clear();
                         maquina.BuscarProducto();
                         break;
@@ -58,18 +51,18 @@ namespace ConsoleApp1
                     case 3:
                         Console.Clear();
                         Console.WriteLine("La opcion introducida es solo para administradores");
-                        /*Pedimos el código para los administradores*/
+
                         Console.WriteLine("Introduce el codigo secreto para continuar");
                         CodigoSecreto = Console.ReadLine();
                         if (CodigoSecreto == "0000")
                         {
-                            /*En caso de que el código sea correcto añadimos un producto*/
+
                             Console.WriteLine("Contraseña correcta!");
                             maquina.AniadirProducto();
                         }
                         else
                         {
-                            /*En caso de que sea incorrecto el código */
+
                             Console.WriteLine("No ha introducido el codigo correcto");
                             Console.WriteLine("Saliendo al menu principal...");
                             System.Threading.Thread.Sleep(1000);
@@ -79,12 +72,12 @@ namespace ConsoleApp1
                     case 4:
                         Console.Clear();
                         Console.WriteLine("La opcion introducida es solo para administradores");
-                        /*Pedimos el código para los administradores*/
+
                         Console.WriteLine("Introduce el codigo secreto para continuar");
                         CodigoSecreto = Console.ReadLine();
                         if (CodigoSecreto == "0000")
                         {
-                            /*En caso del que el código sea correcto añadimos una carga completa de productos*/
+
                             Console.WriteLine("Contraseña correcta!");
                             if (File.Exists("Productos.txt"))
                             {
@@ -93,7 +86,7 @@ namespace ConsoleApp1
                         }
                         else
                         {
-                            /*cuando haya introducido el código incorrecto*/
+
                             Console.WriteLine("No ha introducido el codigo correcto");
                             Console.WriteLine("Saliendo al menu principal...");
                             System.Threading.Thread.Sleep(1000);
@@ -104,7 +97,7 @@ namespace ConsoleApp1
                         break;
 
                     default:
-                        /*Cuando ponga un número del 1 al 5*/
+
                         Console.WriteLine("Opcion incorrecta");
                         break;
                     
@@ -113,7 +106,7 @@ namespace ConsoleApp1
             } while (Opcion != 5);
             if (Opcion == 5)
             {
-                /*En caso de que ponga el 5*/
+
                 maquina.GuardarContenidoArchivo();
                 Console.WriteLine("Gracias por usar la maquina, esperamos verle pronto :)");
             }
