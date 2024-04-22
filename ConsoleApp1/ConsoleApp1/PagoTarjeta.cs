@@ -17,11 +17,13 @@ namespace ConsoleApp1
 
         public void PagoConTarjeta(List<Producto> CarritoCompra)
         {
+            /*Sumamos el precio total de la lista*/
             foreach (Producto p in CarritoCompra)
             {
                 TotalDinero = TotalDinero + p.Precio_unidad_producto;
             }
 
+            /*Pedimos los datos bancarios*/
             Console.WriteLine("Introduce el número de tu tarjeta: ");
             string num_Targeta = Console.ReadLine();
 
@@ -34,6 +36,7 @@ namespace ConsoleApp1
             Console.WriteLine("Introduce el código de seguridad (****)");
             int cod_Seguridad = int.Parse(Console.ReadLine());
 
+            /*Restamos el dinero de la cuenta al precio de la lista y si no es suficiente le mostramos un menaje*/
             if (TotalDinero <= saldo)
             {
                 saldo = saldo - TotalDinero;
