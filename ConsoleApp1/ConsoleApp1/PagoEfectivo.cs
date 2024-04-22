@@ -16,7 +16,7 @@ namespace ConsoleApp1
         }
 
         public double TotalDinero { get; set; }
-
+        /*Array de monedas y billetes*/
         public static double[] Monedas = new double[]
         {
             0.01,
@@ -36,18 +36,18 @@ namespace ConsoleApp1
             500.0
         };
 
-
         public void PagarConEfectivo(List<Producto> CarritoCompra)
         {
-            
+            /*Sumamos el precio de los productos de la lista*/
             foreach(Producto p in CarritoCompra)
             {
                 TotalDinero = TotalDinero + p.Precio_unidad_producto;
             }
             do
             {
+                /*Mostramos el tipo de monedas y billetes*/
                 MostrarTiposDeMonedas();
-
+                /*Pedimos que moneda o billete quiere utilizar y se lo restamos al precio hasta que sea 0 o menor que 0*/
                 Console.WriteLine("Selecciona que moneda o billete quieres introducir: ");
                 int opcion = int.Parse(Console.ReadLine());
                 TotalDinero = TotalDinero - Monedas[opcion];
@@ -72,6 +72,7 @@ namespace ConsoleApp1
 
         private void MostrarTiposDeMonedas()
         {
+            /*Hacemos un for recorriendo el array mostrando las monedas y los billetes*/
             for (int i = 0; i < Monedas.Length; i++)
             {
 
