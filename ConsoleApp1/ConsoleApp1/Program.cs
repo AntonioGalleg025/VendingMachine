@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    /*Ejercicio Realizado por: Antonio Gallego Ortiz, Carlos Ynclan Nieto, Adrian Zamorano Valero*/
+    /*Ejercicio Realizado por: Antonio Gallego Ortiz, Carlos Ynclan Nieto, Adrián Zamorano Valero*/
     internal class Program
     {
         static int Opcion;
@@ -26,7 +26,6 @@ namespace ConsoleApp1
             {
                 /*Menú con opciones*/
                 Console.Clear();
-
                 Console.WriteLine("1-Comprar un producto");
                 Console.WriteLine("2-Mostrar informacion de un producto");
                 Console.WriteLine("3-Acceder al menu de administracion de productos");
@@ -38,23 +37,22 @@ namespace ConsoleApp1
                     Opcion = int.Parse(Console.ReadLine());
                     switch (Opcion)
                     {
-
+                        /*Función para comprar un producto*/
                         case 1:
-
                             Console.Clear();
                             maquina.ComprarProducto();
                             break;
 
+                        /*Función para buscar un producto*/
                         case 2:
-
                             Console.Clear();
                             maquina.BuscarProducto();
                             break;
-
+                        /*Función para meter un producto*/
                         case 3:
                             Console.Clear();
                             Console.WriteLine("La opcion introducida es solo para administradores");
-
+                            /*Pedimos el código para admins*/
                             Console.WriteLine("Introduce el codigo secreto para continuar");
                             CodigoSecreto = Console.ReadLine();
                             if (CodigoSecreto == "0000")
@@ -71,7 +69,7 @@ namespace ConsoleApp1
                                 System.Threading.Thread.Sleep(1000);
                             }
                             break;
-
+                        /*Cargar productos*/
                         case 4:
                             Console.Clear();
                             Console.WriteLine("La opcion introducida es solo para administradores");
@@ -109,7 +107,7 @@ namespace ConsoleApp1
             } while (Opcion != 5);
             if (Opcion == 5)
             {
-
+                /*Guardamos el contenido del archivo*/
                 maquina.GuardarContenidoArchivo();
                 Console.WriteLine("Gracias por usar la maquina, esperamos verle pronto :)");
             }
