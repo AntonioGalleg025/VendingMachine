@@ -26,8 +26,8 @@ namespace ConsoleApp1
 
         public override void NuevoProducto(List<Producto> L, int Comprobacion)
         {
+            /*Llamamos a la del padre y completamos con los de productos alimenticios*/
             base.NuevoProducto(L, Comprobacion);
-
             TipoProducto = "Producto Alimenticio";
             Console.WriteLine("Introduce una descripcion a cerca de la informacion nutricional de su producto");
             InfoNutricional = Console.ReadLine();
@@ -37,16 +37,19 @@ namespace ConsoleApp1
 
         public override string MostrarDetalles()
         {
+            /*Llamamos a la del padre y complementamos*/
             return $"{base.MostrarDetalles()}\n\tDescripción nutricional: {InfoNutricional}"; 
         }
 
         public override string MostrarUnElemento()
         {
+            /*Llamamos a la del padre*/
             return base.MostrarUnElemento();
         }
 
         public override string GuardarDatosFichero()
         {
+            /*Llamamos a la del padre, completamos y lo guardamos en el fichero*/
             return base.GuardarDatosFichero() + $"{InfoNutricional}"; 
         }
     }
