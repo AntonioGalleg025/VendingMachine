@@ -29,10 +29,11 @@ namespace ConsoleApp1
             
             do
             {
-
+                /*Pedimos el id del producto*/
                 Console.WriteLine("Escribe el ID del producto:");
                 int Id = int.Parse(Console.ReadLine());
 
+                    /*Recorremos las listas cuando el id coinciden quitamos una unidad de producto de la lista temporal*/
                     foreach (Producto c in ListaProductos)
                     {
                         foreach (Producto l in ListaTemp)
@@ -71,6 +72,7 @@ namespace ConsoleApp1
 
             } while (Salir != 1);
 
+            /*Si quieres pagar los eliminas de la lista de productos, sino quieres pagar limpias la lista*/
             if (CarritoCompra.Count > 0)
             {
                 Console.WriteLine($"Tienes {CarritoCompra.Count} en tu cesta, quiere proceder con el pago?(1 = si || 2 = no): ");
@@ -114,7 +116,7 @@ namespace ConsoleApp1
 
         public void Pagar()
         {
-
+            /*Opciones para pagar con tarjeta o en efectivo*/
             Console.WriteLine("Cual es el metodo de pago deseado(1.Efectivo  2.Tarjeta):  ");
             int option = int.Parse(Console.ReadLine());
 
@@ -137,6 +139,7 @@ namespace ConsoleApp1
 
         public void MenuProductosAdmin()
         {
+            /*Menú con opciones*/
             int opcion;
             Console.Clear();
             Console.WriteLine("1-Añadir un nuevo producto a la maquina");
@@ -146,14 +149,15 @@ namespace ConsoleApp1
             opcion = int.Parse(Console.ReadLine());
             switch(opcion)
             {
+                /*Función para añadir productos*/
                 case 1:
                     AniadirProducto();
                     break;
-
+                /*Función para eliminar productos*/
                 case 2:
                     EliminarProducto();
                     break;
-
+                /*Función para eliminar una unidad*/
                 case 3:
                     EliminarUnaUnidad();
                     break;
@@ -168,13 +172,13 @@ namespace ConsoleApp1
         public void AniadirProducto()
         {
             int Comprobacion = ComprobarCantidadProductos();
-
+            /*Menú con opciones*/
             Console.WriteLine("1-Nuevo producto precioso");
             Console.WriteLine("2-Nuevo producto alimenticio");
             Console.WriteLine("3-Nuevo producto electronico");
             Console.WriteLine("Introduce el producto que quieres agregar: ");
             int opcion = int.Parse(Console.ReadLine());
-
+            /*Comprobamos el número de productos y en caso de no estar llena añadimos lso productos preciosos, alimenticios o electrónicos*/
             switch (opcion)
             {
 
@@ -229,6 +233,7 @@ namespace ConsoleApp1
 
         public void EliminarProducto()
         {
+            /*Listamos los productos, pedimos el id y lo eliminamos*/
             ListarTodos();
             Console.WriteLine("Introduce el Id del producto que quieres eliminar: ");
             int IdElimino = int.Parse(Console.ReadLine());
@@ -247,6 +252,8 @@ namespace ConsoleApp1
 
         public void EliminarUnaUnidad()
         {
+            /*En vez de eliminar el producto quitamos solo una unidad*/
+            /*Si solo queda una un producto lo elimina de la lista*/
             ListarTodos();
             Console.WriteLine("Introduce el Id del producto del cual quieres eliminar una unidad: ");
             int IdElimino = int.Parse(Console.ReadLine());
@@ -267,7 +274,7 @@ namespace ConsoleApp1
         }
         public void ListarTodos()
         {
-
+            /*Recorremos la lista y en caso de que haya productos muestra los detalles de forma reducida*/
             Console.WriteLine();
             foreach (Producto p in ListaProductos)
             {
@@ -293,8 +300,8 @@ namespace ConsoleApp1
 
         public void BuscarProducto()
         {
+            /*Pedimos el id y mostramos el producto de forma detallada*/
             ListarTodos();
-
             Console.WriteLine("\nIntroduce el ID del producto que desea ver: ");
             int id_producto = int.Parse(Console.ReadLine());
             foreach (Producto p in ListaProductos)
@@ -324,6 +331,7 @@ namespace ConsoleApp1
 
         private int ComprobarCantidadProductos()
         {
+            /*Recorremos la lista y contamos el numero de productos que hay en la lista*/
             int Contador = 0;
             int Sumatorio = 0;
             int[] CantidadUnidades = new int[100];
@@ -342,6 +350,7 @@ namespace ConsoleApp1
 
         public void CargarContenidoArchivo()
         {
+            /*Indentificamos los items que hay en el archivo y los añadimos a la lista*/
             try
             {
                 FileStream fs = new FileStream($"Productos.csv", FileMode.OpenOrCreate, FileAccess.Read);
@@ -390,6 +399,7 @@ namespace ConsoleApp1
 
         public void GuardarContenidoArchivo()
         {
+            /*Recorremos la lista y guardamos los datos en el fichero*/
             FileStream fs = new FileStream($"Productos.csv", FileMode.OpenOrCreate, FileAccess.Write);
             StreamWriter sw = new StreamWriter(fs);
             foreach (Producto p in ListaProductos)
