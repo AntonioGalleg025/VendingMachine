@@ -32,6 +32,7 @@ namespace ConsoleApp1
 
         public virtual void NuevoProducto(List<Producto> ListaProductos, int Comprobacion)
         {
+            /*Pedimos los elementos de cada producto y lo almacenamos en los atríbutos*/
             Console.WriteLine("---------------------Vamos a agregar un producto--------------------");
 
             Id = ListaProductos.Count() + 1;
@@ -56,20 +57,20 @@ namespace ConsoleApp1
 
         public virtual string MostrarDetalles()
         {
-
+            /*Mostramos los elementos*/
             return $"({Nombre_producto}) Nombre: {Nombre_producto} \n\tUnidades disponibles: {Unidades_producto} \n\tPrecio: {Precio_unidad_producto} euros " +
                 $"\n\tDescripción: {descripción_del_producto}";
         }
 
         public virtual string MostrarUnElemento()
         {
-
+            /*Mostramos los elementos de forma reducida*/
             return $"({Id}) Nombre: {Nombre_producto}\n\tUnidades disponibles: {Unidades_producto}\n\tPrecio: {Precio_unidad_producto} euros";
         }
 
         public virtual string GuardarDatosFichero()
         {
-
+            /*Guardamos los archivos en el archivo*/
             return $"{Id};{Nombre_producto};{TipoProducto};{Unidades_producto};" +
                         $"{Precio_unidad_producto};" +
                         $"{descripción_del_producto};";
