@@ -20,7 +20,7 @@ namespace ConsoleApp1
 
         public void ComprarProducto()
         {
-       
+            ListarTodos();
             foreach (Producto producto in ListaProductos)
             {
                 

@@ -41,7 +41,7 @@ namespace ConsoleApp1
             Console.WriteLine("Materiales añadidos con exito, pulse una tecla para continuar");
             Console.ReadKey();
 
-            Console.WriteLine("El producto electronico incluye pilas?(1 = si || 2 = no): ");
+            Console.WriteLine("El producto electrónico incluye pilas?(1 = si || 2 = no): ");
             int opcion = int.Parse(Console.ReadLine());
 
             if (opcion == 1)

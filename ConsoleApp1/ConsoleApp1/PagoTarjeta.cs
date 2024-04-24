@@ -36,7 +36,7 @@ namespace ConsoleApp1
             Console.WriteLine("Introduce el código de seguridad (****)");
             int cod_Seguridad = int.Parse(Console.ReadLine());
 
-            /*Restamos el dinero de la cuenta al precio de la lista y si no es suficiente le mostramos un menaje*/
+            /*Restamos el dinero de la cuenta al precio de la lista y si no es suficiente le mostramos un mensaje*/
             if (TotalDinero <= saldo)
             {
                 saldo = saldo - TotalDinero;
@@ -46,7 +46,7 @@ namespace ConsoleApp1
             }
             else
             {
-                Console.WriteLine("Su saldo es insuficiente, no se puede comprar el articulo");
+                Console.WriteLine("Su saldo es insuficiente, no se puede comprar el artículo");
                 Console.ReadKey();
             }
         }

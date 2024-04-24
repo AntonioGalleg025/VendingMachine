@@ -42,7 +42,7 @@ namespace ConsoleApp1
 
             do
             {
-                Console.WriteLine("\nIntroduce el numero de unidades del producto: ");
+                Console.WriteLine("\nIntroduce el número de unidades del producto: ");
                 Unidades_producto = int.Parse(Console.ReadLine());
 
             } while (Unidades_producto > 12 || Comprobacion + Unidades_producto > 12);
