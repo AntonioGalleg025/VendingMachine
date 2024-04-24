@@ -25,6 +25,7 @@ namespace ConsoleApp1
             do
             {
                 /*Menú con opciones*/
+                Console.ForegroundColor= ConsoleColor.White;
                 Console.Clear();
                 Console.WriteLine("1-Comprar un producto");
                 Console.WriteLine("2-Mostrar informacion de un producto");
