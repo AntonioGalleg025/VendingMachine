@@ -145,6 +145,7 @@ namespace ConsoleApp1
             Console.WriteLine("1-Añadir un nuevo producto a la maquina");
             Console.WriteLine("2-Eliminar un tipo de producto que esta dentro de la maquina");
             Console.WriteLine("3-Eliminar una unidad de un producto que esta en la maquina");
+            Console.WriteLine("4-Agregar unidades de un producto");
             Console.WriteLine("Selecciona la opcion que quiere realizar: ");
             opcion = int.Parse(Console.ReadLine());
             switch(opcion)
@@ -162,10 +163,40 @@ namespace ConsoleApp1
                     EliminarUnaUnidad();
                     break;
 
+                case 4:
+                    AgregarUnidades();
+                    break;
+
                 default:
                     Console.WriteLine("Opcion no valida");
                     Console.ReadKey();
                     break;
+            }
+        }
+
+        public void AgregarUnidades()
+        {
+            int UdsAgrego;
+            int UdsMaquina = ComprobarCantidadProductos();
+            ListarTodos();
+            if(UdsMaquina < 12)
+            {
+                Console.WriteLine("Introduce el Id del producto del que quieres agregar unidades: ");
+                int IdElimino = int.Parse(Console.ReadLine());
+                foreach (Producto p in ListaProductos)
+                {
+                    if (IdElimino == p.Id)
+                    {
+                        do
+                        {
+                            Console.WriteLine("Cuantas unidades quieres agregar?: ");
+                            UdsAgrego = int.Parse(Console.ReadLine());
+                        } while (UdsAgrego + UdsMaquina > 12);
+                        p.Unidades_producto += UdsAgrego;
+                        Console.WriteLine("Unidades añadidas con exito");
+                        break;
+                    }
+                }
             }
         }
 
